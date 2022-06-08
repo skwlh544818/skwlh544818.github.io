@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://skwlh544818.github.io</id>
+    <title>skw的小站</title>
+    <updated>2022-06-08T12:40:35.835Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://skwlh544818.github.io"/>
+    <link rel="self" href="https://skwlh544818.github.io/atom.xml"/>
+    <subtitle>欢迎来到我的网站</subtitle>
+    <logo>https://skwlh544818.github.io/images/avatar.png</logo>
+    <icon>https://skwlh544818.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, skw的小站</rights>
+    <entry>
+        <title type="html"><![CDATA[3. Longest Substring Without Repeating Characters]]></title>
+        <id>https://skwlh544818.github.io/post/3-longest-substring-without-repeating-characters/</id>
+        <link href="https://skwlh544818.github.io/post/3-longest-substring-without-repeating-characters/">
+        </link>
+        <updated>2022-05-21T04:27:07.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</h1>
+<h2 id="问题">问题</h2>
+<p>Given a string <code>s</code>, find the length of the <strong>longest substring</strong> without repeating characters.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</h1>
+<h2 id="问题">问题</h2>
+<p>Given a string <code>s</code>, find the length of the <strong>longest substring</strong> without repeating characters.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<pre><code>Input: s = &quot;abcabcbb&quot;
+Output: 3
+Explanation: The answer is &quot;abc&quot;, with the length of 3.
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: s = &quot;bbbbb&quot;
+Output: 1
+Explanation: The answer is &quot;b&quot;, with the length of 1.
+</code></pre>
+<p>Example 3:</p>
+<pre><code>Input: s = &quot;pwwkew&quot;
+Output: 3
+Explanation: The answer is &quot;wke&quot;, with the length of 3.
+Notice that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li><code>0 &lt;= s.length &lt;= 5 * 104</code></li>
+<li><code>s</code> consists of English letters, digits, symbols and spaces.</li>
+</ul>
+<h2 id="解法一">解法一</h2>
+<p>这个解法就是使用一个列表保存当前子串的字母，如果当前字母不在列表中，则保存下来。如果在列表中，则将从开头到重复字母的所有字段全部去掉，然后再将当前字母加入。在排出字段前，会测量列表的长度，来和维护的最大长度进行比较。最后输出最大的无重复子串。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">class Solution:
+    def lengthOfLongestSubstring(self, s: str) -&gt; int:
+        l = []
+        maxl = 0
+        for i in s:
+            if i not in l:
+                l.append(i)
+            else:
+                if len(l)&gt;maxl:
+                    maxl = len(l)
+                while i in l:
+                    l.pop(0)
+                l.append(i)
+        if len(l)&gt;maxl:
+            maxl = len(l)
+        return maxl
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>这种方法是使用字典的方式存储每个字母和它对应的索引值，如果当前字母在字典中，并且上次出现的下标大于当前长度的起始下标，那么起始下标就转变成上次出现的下标，并将当前字母的索引改为最新的。如果不在字典中，那么将当前数字保存到字典中，并且计算当前的长度是否超过了最大长度。</p>
+<blockquote>
+<p>这个理解起来确实很有难度。</p>
+</blockquote>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">class Solution:
+    def lengthOfLongestSubstring(self, s: str) -&gt; int:
+        d = {}
+        k,maxl = -1,0
+        for i,c in enumerate(s):
+            if c in d and d[c]&gt;k:
+                k = d[c]
+                d[c] = i
+            else:
+                d[c] = i
+                maxl = max(maxl,d[c]-k)
+        return maxl
+                
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2. Add Two Numbers]]></title>
+        <id>https://skwlh544818.github.io/post/2-add-two-numbers/</id>
+        <link href="https://skwlh544818.github.io/post/2-add-two-numbers/">
+        </link>
+        <updated>2022-05-20T10:25:48.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="2-add-two-numbers">2. Add Two Numbers</h1>
+<h2 id="问题">问题</h2>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="2-add-two-numbers">2. Add Two Numbers</h1>
+<h2 id="问题">问题</h2>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/05/20/5tcrNKz21X8MPCA.png" alt="" loading="lazy"></figure>
+<pre><code>Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: l1 = [0], l2 = [0]
+Output: [0]
+</code></pre>
+<p>Example 3:</p>
+<pre><code>Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes in each linked list is in the range <code>[1, 100]</code>.</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
+<li>It is guaranteed that the list represents a number that does not have leading zeros.</li>
+</ul>
+<h2 id="解法一">解法一</h2>
+<p>迭代的方法是将每个链表的数值还原成真实的数字，然后相加得到真实的结果，然后创建一个链表用来保存每一位数。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>M</mi><mo>+</mo><mi>N</mi><mo>+</mo><mi>K</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(M+N+K)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>是l1的长度，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>是l2的长度，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>是输出链表的长度，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:
+        sum = 0
+        i = 1
+        while l1!= None:
+            sum = l1.val*i+sum
+            l1 = l1.next
+            i*=10
+        i = 1
+        while l2!=None:
+            sum = l2.val*i + sum
+            l2 = l2.next
+            i*=10
+        l3 = ListNode()
+        l = ListNode(next = l3)
+        if sum == 0:return l3
+        while sum != 0:
+            temp = ListNode(sum%10)
+            l3.next = temp
+            l3 = l3.next
+            sum = sum//10
+        return l.next.next
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>另外一种迭代的方法，如果两个都不为None，则一直迭代，迭代的过程则需要一位c来表示进位，两个节点的值相加以及前一个进位求和，结果对10的余数保存成新的链表的结点，结果除以十的商表示当前进位。当一个已经为None时，则只循环另外一个不为None的。最后如果进位为0，则不加新的节点，如果不为零，则加一个新的节点。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>M</mi><mo>+</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(M+N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:
+        c = 0
+        l3 = ListNode()
+        l = ListNode(next = l3)
+        while l1!=None and l2!=None:
+            temp = ListNode((l1.val+l2.val+c)%10)
+            c = (l1.val+l2.val+c)//10
+            l1 = l1.next
+            l2 = l2.next
+            l3.next = temp
+            l3 = l3.next
+        if l1 == None:
+            while l2 !=None:
+                temp = ListNode((l2.val+c)%10)
+                c = (l2.val+c)//10
+                l2 = l2.next
+                l3.next = temp
+                l3 = l3.next
+        else:
+            while l1 !=None:
+                temp = ListNode((l1.val+c)%10)
+                c = (l1.val+c)//10
+                l1 = l1.next
+                l3.next = temp
+                l3 = l3.next
+        if c != 0:
+            l3.next = ListNode(c%10)
+        return l.next.next
+        
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[543. Diameter of Binary Tree]]></title>
+        <id>https://skwlh544818.github.io/post/543-diameter-of-binary-tree/</id>
+        <link href="https://skwlh544818.github.io/post/543-diameter-of-binary-tree/">
+        </link>
+        <updated>2022-05-20T06:51:21.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="543-diameter-of-binary-tree">543. Diameter of Binary Tree</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>root</code> of a binary tree, return <em>the length of the <strong>diameter</strong> of the tree</em>.</p>
+<p>The <strong>diameter</strong> of a binary tree is the <strong>length</strong> of the longest path between any two nodes in a tree. This path may or may not pass through the <code>root</code>.</p>
+<p>The <strong>length</strong> of a path between two nodes is represented by the number of edges between them.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="543-diameter-of-binary-tree">543. Diameter of Binary Tree</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>root</code> of a binary tree, return <em>the length of the <strong>diameter</strong> of the tree</em>.</p>
+<p>The <strong>diameter</strong> of a binary tree is the <strong>length</strong> of the longest path between any two nodes in a tree. This path may or may not pass through the <code>root</code>.</p>
+<p>The <strong>length</strong> of a path between two nodes is represented by the number of edges between them.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/05/20/gtOE3BYMvWUC9uh.png" alt="" loading="lazy"></figure>
+<pre><code>Input: root = [1,2,3,4,5]
+Output: 3
+Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: root = [1,2]
+Output: 1
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes in the tree is in the range <code>[1, 104]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
+<h2 id="解法">解法</h2>
+<p>深度优先遍历的递归算法，我们迭代可以计算从左子树到root的最长距离，并且计算右子树到root的最长距离，期间一直维护最大的距离，也就是左子树的最大距离加上右子树的最大距离。如果其和大于维护的最大距离，则替换，每次递归输出的则都是左子树和右子树中的最大值。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，n是节点的个数.</p>
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -&gt; int:
+        self.maxd = 0
+        def depth(root):
+            if root == None : return 0
+            left = depth(root.left)+1
+            right = depth(root.right)+1
+            if self.maxd &lt; left+right:
+                self.maxd = left+right-2
+            return max(left,right)
+        depth(root)
+        return self.maxd
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[338. Counting Bits]]></title>
+        <id>https://skwlh544818.github.io/post/338-counting-bits/</id>
+        <link href="https://skwlh544818.github.io/post/338-counting-bits/">
+        </link>
+        <updated>2022-05-20T05:10:04.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="338-counting-bits">338. Counting Bits</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer <code>n</code>, return <em>an array</em> <code>ans</code> <em>of length</em> <code>n + 1</code> <em>such that for each</em> <code>i</code> (<code>0 &lt;= i &lt;= n</code>)<em>,</em> <code>ans[i]</code> <em>is the <strong>number of</strong></em> <code>1</code><em><strong>'s</strong> in the binary representation of</em> <code>i</code>.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="338-counting-bits">338. Counting Bits</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer <code>n</code>, return <em>an array</em> <code>ans</code> <em>of length</em> <code>n + 1</code> <em>such that for each</em> <code>i</code> (<code>0 &lt;= i &lt;= n</code>)<em>,</em> <code>ans[i]</code> <em>is the <strong>number of</strong></em> <code>1</code><em><strong>'s</strong> in the binary representation of</em> <code>i</code>.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<pre><code>Input: n = 2
+Output: [0,1,1]
+Explanation:
+0 --&gt; 0
+1 --&gt; 1
+2 --&gt; 10
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: n = 5
+Output: [0,1,1,2,1,2]
+Explanation:
+0 --&gt; 0
+1 --&gt; 1
+2 --&gt; 10
+3 --&gt; 11
+4 --&gt; 100
+5 --&gt; 101
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li><code>0 &lt;= n &lt;= 105</code></li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>It is very easy to come up with a solution with a runtime of <code>O(n log n)</code>. Can you do it in linear time <code>O(n)</code> and possibly in a single pass?</li>
+<li>Can you do it without using any built-in function (i.e., like <code>__builtin_popcount</code> in C++)?</li>
+</ul>
+<h2 id="解法一">解法一</h2>
+<p>第一种解法就是创建一个数组，然后遍历0-n的每个数，然后判断每个数除以2的余数，然后再除以2之后继续求余，每个余数判断为一的个数。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">def countBits(n: int):
+    ans = []
+    for i in range(n+1):
+        sum = 0
+        while i != 0:
+            if i%2==1:
+                sum+=1
+            i = i//2
+        ans.append(sum)
+    return ans
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>第二种解法是动态规划的方法，通过分析可以得到数字<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>(</mo><msup><mn>2</mn><mi>j</mi></msup><mo>≤</mo><mi>i</mi><mo>&lt;</mo><msup><mn>2</mn><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">i(2^j\leq i&lt;2^{j+1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0746639999999998em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69862em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.0746639999999998em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的二进制1的个数等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><msup><mn>2</mn><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">i-2^j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span></span></span></span>的1的个数加一。并且我们知道0没有二进制1的个数，1有1个。这样就能够循环求得到数字n的1的个数。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python">class Solution:
+    def countBits(self, n: int) -&gt; List[int]:
+        ans = [0 for i in range(n+1) ]
+        j = 0
+        i = 1
+        while i &lt;= n:
+            while i &gt;= 2**j and i&lt;2**(j+1):
+                ans[i] = ans[i-2**j]+1
+                i+=1
+                if i &gt; n:break
+            j+=1
+        return ans
+            
+</code></pre>
+<h2 id="解法三">解法三</h2>
+<p>记录一种方法，令 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mi mathvariant="normal">&amp;</mi><mo>(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">y=x\&amp;(x-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mord">&amp;</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，则 y 为将 x 的最低位的1从 1 变成 0 之后的数.显然 0≤y&lt;x，bits[x]=bits[y]+1。因此对任意正整数 x，都有bits[x]=bits[x &amp; (x−1)]+1。遍历从 1 到 n 的每个正整数 i，计算 bits 的值。最终得到的数组 bits 即为答案。</p>
+<p>时间复杂度是O(n)，空间复杂度是O(n)。</p>
+<pre><code class="language-python">class Solution:
+    def countBits(self, n: int) -&gt; List[int]:
+        ans = [0]
+        for i in range(1,n+1):
+            ans.append(ans[i&amp;(i-1)]+1)
+        return ans
+            
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[283. Move Zeroes]]></title>
+        <id>https://skwlh544818.github.io/post/283-move-zeroes/</id>
+        <link href="https://skwlh544818.github.io/post/283-move-zeroes/">
+        </link>
+        <updated>2022-05-19T12:06:12.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="283-move-zeroes">283. Move Zeroes</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer array <code>nums</code>, move all <code>0</code>'s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p><strong>Note</strong> that you must do this in-place without making a copy of the array.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="283-move-zeroes">283. Move Zeroes</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer array <code>nums</code>, move all <code>0</code>'s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p><strong>Note</strong> that you must do this in-place without making a copy of the array.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<pre><code>Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: nums = [0]
+Output: [0]
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 104</code></li>
+<li><code>-231 &lt;= nums[i] &lt;= 231 - 1</code></li>
+</ul>
+<p><strong>Follow up:</strong> Could you minimize the total number of operations done?</p>
+<h2 id="解法一">解法一</h2>
+<p>简单粗暴的解法就是将原数组中的全部的0删除掉，然后再后面补零。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python">class Solution:
+    def moveZeroes(self, nums: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        i = 0
+        while 0 in nums:
+            nums.remove(0)
+            i+=1
+        for j in range(i):
+            nums.append(0)
+        
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>这种方法使用双指针方法，左指针指向处理完毕的序列的下一位，右指针指向待处理的序列的首位，如果右指针指向的数字不为0，那么交换左右指针的数字，然后左指针加一。处理完毕后右指针加一。这样两个指针中间都是0.</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python">class Solution:
+    def moveZeroes(self, nums: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        n = len(nums)
+        left,right = 0,0
+        while right &lt; n:
+            if nums[right]!=0:
+                nums[left],nums[right]=nums[right],nums[left]
+                left += 1
+            right +=1
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[234. Palindrome Linked List]]></title>
+        <id>https://skwlh544818.github.io/post/234-palindrome-linked-list/</id>
+        <link href="https://skwlh544818.github.io/post/234-palindrome-linked-list/">
+        </link>
+        <updated>2022-05-19T07:21:05.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="234-palindrome-linked-list">234. Palindrome Linked List</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>head</code> of a singly linked list, return <code>true</code> if it is a palindrome.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="234-palindrome-linked-list">234. Palindrome Linked List</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>head</code> of a singly linked list, return <code>true</code> if it is a palindrome.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/05/19/4ihyxwFk9tuTb5r.png" alt="" loading="lazy"></figure>
+<pre><code>Input: head = [1,2,2,1]
+Output: true
+</code></pre>
+<p>Example 2:</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.loli.net/2022/05/19/85yuotLPT1Fjdaq.png" alt="" loading="lazy"></figure>
+<pre><code>Input: head = [1,2]
+Output: false
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes in the list is in the range <code>[1, 105]</code>.</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
+</ul>
+<p><strong>Follow up:</strong> Could you do it in <code>O(n)</code> time and <code>O(1)</code> space?</p>
+<h2 id="解法一">解法一</h2>
+<p>将链表的各个结点的值保存到数组中，然后用双指针来遍历数组来查看是否是回文数组。</p>
+<p>时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -&gt; bool:
+        s = []
+        l = head
+        while l!=None:
+            s.append(l.val)
+            l = l.next
+        return s == s[::-1]
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>递归的方法，一个指针指向头节点，另一个指针通过递归的形式从后往前循环指向，当两个指针的内容相同时，则前向指针向后走一位，递归指针向前回归一位。当内容不同时，则输出False。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -&gt; bool:
+        self.front = head
+        def revers(cur = head):
+            if cur != None:
+                if not revers(cur.next):
+                    return False
+                if self.front.val != cur.val:
+                    return False
+                self.front = self.front.next
+            return True
+        return revers()
+</code></pre>
+<h2 id="解法三">解法三</h2>
+<p>这个解法是先来判断链表的中间节点，可以使用快慢指针的方法，当快指针走到末尾时，慢指针正好在中间位置。也可以获得结点的个数后，循环到中间节点。然后利用反转列表的方式将中间节点后面的链表全部反转，这样就可以比对两边的列表的值了。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -&gt; bool:
+        slow,fast = head,head
+        while fast.next != None and fast.next.next != None:
+            slow = slow.next
+            fast = fast.next.next
+        half = self.revers(slow.next)
+        while half!=None:
+            if half.val != head.val:
+                return False
+            half = half.next
+            head = head.next
+        return True       
+    def revers(self,head):
+        if head == None:
+            return None
+        i = head
+        j = i.next
+        head.next = None
+        while j != None:
+            temp = i
+            i = j
+            j = j.next
+            i.next = temp
+        return i
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[226. Invert Binary Tree]]></title>
+        <id>https://skwlh544818.github.io/post/226-invert-binary-tree/</id>
+        <link href="https://skwlh544818.github.io/post/226-invert-binary-tree/">
+        </link>
+        <updated>2022-05-18T12:17:32.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="226-invert-binary-tree">226. Invert Binary Tree</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>root</code> of a binary tree, invert the tree, and return <em>its root</em>.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="226-invert-binary-tree">226. Invert Binary Tree</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>root</code> of a binary tree, invert the tree, and return <em>its root</em>.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/05/18/5vDC6qOdmwizPka.png" alt="" loading="lazy"></figure>
+<pre><code>Input: root = [4,2,7,1,3,6,9]
+Output: [4,7,2,9,6,3,1]
+</code></pre>
+<p>Example 2:</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.loli.net/2022/05/18/WL9tK6Iijb1r3m5.png" alt="" loading="lazy"></figure>
+<pre><code>Input: root = [2,1,3]
+Output: [2,3,1]
+</code></pre>
+<p>Example 3:</p>
+<pre><code>Input: root = []
+Output: []
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes in the tree is in the range <code>[0, 100]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
+<h2 id="解法一">解法一</h2>
+<p>广度优先遍历算法，将当前结点的子结点加入到队列中，然后再将左右结点互换，由于原先的左右结点以及在队列中了，所以不会造成问题，直到结点互换完毕。</p>
+<p>时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，n指的是结点个数。</p>
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -&gt; Optional[TreeNode]:
+        if not root :return root
+        s = []
+        l = root
+        s.append(l)
+        while len(s) !=0 :
+            num = len(s)
+            while num&gt;0:
+                r = s.pop(0)
+                if r.left:s.append(r.left)
+                if r.right:s.append(r.right)
+                temp = r.left
+                r.left = r.right
+                r.right = temp
+                num-=1
+        return root        
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>深度优先遍历则是使用递归的方式实现的，先递归左子树，再递归右子树，最后将返回的结果相互交换，这是自下而上的交换。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -&gt; Optional[TreeNode]:
+        if not root :return root
+        left = self.invertTree(root.left)
+        right = self.invertTree(root.right)
+        root.left,root.right = right,left
+        return root
+                
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[206. Reverse Linked List]]></title>
+        <id>https://skwlh544818.github.io/post/206-reverse-linked-list/</id>
+        <link href="https://skwlh544818.github.io/post/206-reverse-linked-list/">
+        </link>
+        <updated>2022-05-18T04:29:59.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="206-reverse-linked-list">206. Reverse Linked List</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>head</code> of a singly linked list, reverse the list, and return <em>the reversed list</em>.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="206-reverse-linked-list">206. Reverse Linked List</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>head</code> of a singly linked list, reverse the list, and return <em>the reversed list</em>.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/05/18/CyI264oge9BwVFv.png" alt="" loading="lazy"></figure>
+<pre><code>Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+</code></pre>
+<p>Example 2:</p>
+<figure data-type="image" tabindex="2"><img src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" alt="" loading="lazy"></figure>
+<pre><code>Input: head = [1,2]
+Output: [2,1]
+</code></pre>
+<p>Example 3:</p>
+<pre><code>Input: head = []
+Output: []
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes in the list is the range <code>[0, 5000]</code>.</li>
+<li><code>-5000 &lt;= Node.val &lt;= 5000</code></li>
+</ul>
+<p><strong>Follow up:</strong> A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
+<h2 id="解法一">解法一</h2>
+<p>第一种方法是迭代的方法，为了保持链接不断掉，所以使用了三个变量，i变量是当前循环变量，j变量是i的下一个结点，temp代表i移动前的变量，断掉当前链接，维护下一个结点，然后再建新的链接。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:
+        if head == None:
+            return None
+        i = head
+        j = i.next
+        head.next = None
+        while j != None:
+            temp = i
+            i = j
+            j = j.next
+            i.next = temp
+        return i
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>第二种方法是递归的方式，递归的方式是从最后一个节点和前一个结点链接，然后将之前的链接断开，依次往前递归，最后，输出当前结点。递归的一个解法思想是假设已经完成部分，如何将剩下部分由上一个状态转换过来。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+        cur = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return cur
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[169. Majority Element]]></title>
+        <id>https://skwlh544818.github.io/post/169-majority-element/</id>
+        <link href="https://skwlh544818.github.io/post/169-majority-element/">
+        </link>
+        <updated>2022-05-17T08:05:45.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="169-majority-element">169. Majority Element</h1>
+<h2 id="问题">问题</h2>
+<p>Given an array <code>nums</code> of size <code>n</code>, return <em>the majority element</em>.</p>
+<p>The majority element is the element that appears more than <code>⌊n / 2⌋</code> times. You may assume that the majority element always exists in the array.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="169-majority-element">169. Majority Element</h1>
+<h2 id="问题">问题</h2>
+<p>Given an array <code>nums</code> of size <code>n</code>, return <em>the majority element</em>.</p>
+<p>The majority element is the element that appears more than <code>⌊n / 2⌋</code> times. You may assume that the majority element always exists in the array.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<pre><code>Input: nums = [3,2,3]
+Output: 3
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: nums = [2,2,1,1,1,2,2]
+Output: 2
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li><code>n == nums.length</code></li>
+<li><code>1 &lt;= n &lt;= 5 * 104</code></li>
+<li><code>-109 &lt;= nums[i] &lt;= 109</code></li>
+</ul>
+<p><strong>Follow-up:</strong> Could you solve the problem in linear time and in <code>O(1)</code> space?</p>
+<h2 id="解法一">解法一</h2>
+<p>这个解法是简单的使用字典来存储每个数对应的个数，超过⌊n / 2⌋的数字进行输出。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python">
+class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        d = {}
+        for n in nums:
+            if n not in d:
+                d[n]=1
+            else:
+                d[n]+=1
+        for key,value in d.items():
+            if value &gt; len(nums)//2:
+                return key
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>这个方法是排序的方法，直接将数组排序，然后将输出第⌊n / 2⌋个数字即可。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">
+class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        nums.sort()
+        return nums[len(nums)//2]
+</code></pre>
+<h2 id="解法三">解法三</h2>
+<p>这种方法是使用分治法的思想，如果一个数在数组中占了⌊n / 2⌋个数字，那么它一定是左右子组的至少其中一个数组的众数。当每个数组为1时，那么众数就是自己，当大于一时，就要根据合并前的两个数组决定，如果众数相同，那么就是相同的众数，如果不同，则会遍历合并后的数组，得到两个众数的多少。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度由于是递归，所以有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        def maxcout(i,j):
+            if i==j:
+                return nums[i]
+            else:
+                m = (i+j)//2
+                left = maxcout(i,m)
+                right = maxcout(m+1,j)
+                if left == right:
+                    return left
+                else:
+                    leftcount = sum(1 for n in range(i,j+1) if nums[n]==left)
+                    rightcount = sum(1 for n in range(i,j+1) if nums[n]==right)
+                    if leftcount&gt;rightcount:
+                        return left
+                    else:
+                        return right
+                    
+        return maxcout(0,len(nums)-1)
+</code></pre>
+<h2 id="解法四">解法四</h2>
+<p>这种方法是叫Boyer-Moore 投票算法，由于最多的数的数量是大于⌊n / 2⌋的，所以当是相同的数就加一，不是相同的数就减一时。当计数为零时，就切换数字，这样的话，由于众数最多，至少会留下一个数，这样保留的数就是众数。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">class Solution:
+    def majorityElement(self, nums: List[int]) -&gt; int:
+        count = 0
+        ca = 0
+        for n in nums:
+            if count == 0:
+                ca = n
+            if ca == n:
+                count+=1
+            else:
+                count -= 1
+        return ca
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[160. Intersection of Two Linked Lists]]></title>
+        <id>https://skwlh544818.github.io/post/160-intersection-of-two-linked-lists/</id>
+        <link href="https://skwlh544818.github.io/post/160-intersection-of-two-linked-lists/">
+        </link>
+        <updated>2022-05-16T10:16:45.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="160-intersection-of-two-linked-lists">160. Intersection of Two Linked Lists</h1>
+<h2 id="问题">问题</h2>
+<p>Given the heads of two singly linked-lists <code>headA</code> and <code>headB</code>, return <em>the node at which the two lists intersect</em>. If the two linked lists have no intersection at all, return <code>null</code>.</p>
+<p>For example, the following two linked lists begin to intersect at node <code>c1</code>:</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/sun-kaiwei/tukuyan/raw/master/202205161605002.png" alt="" loading="lazy"></figure>
+<p>The test cases are generated such that there are no cycles anywhere in the entire linked structure.</p>
+<p><strong>Note</strong> that the linked lists must <strong>retain their original structure</strong> after the function returns.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="160-intersection-of-two-linked-lists">160. Intersection of Two Linked Lists</h1>
+<h2 id="问题">问题</h2>
+<p>Given the heads of two singly linked-lists <code>headA</code> and <code>headB</code>, return <em>the node at which the two lists intersect</em>. If the two linked lists have no intersection at all, return <code>null</code>.</p>
+<p>For example, the following two linked lists begin to intersect at node <code>c1</code>:</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/sun-kaiwei/tukuyan/raw/master/202205161605002.png" alt="" loading="lazy"></figure>
+<p>The test cases are generated such that there are no cycles anywhere in the entire linked structure.</p>
+<p><strong>Note</strong> that the linked lists must <strong>retain their original structure</strong> after the function returns.</p>
+<!-- more -->
+<h2 id="评判标准">评判标准</h2>
+<p>The inputs to the <strong>judge</strong> are given as follows (your program is <strong>not</strong> given these inputs):</p>
+<ul>
+<li><code>intersectVal</code> - The value of the node where the intersection occurs. This is <code>0</code> if there is no intersected node.</li>
+<li><code>listA</code> - The first linked list.</li>
+<li><code>listB</code> - The second linked list.</li>
+<li><code>skipA</code> - The number of nodes to skip ahead in <code>listA</code> (starting from the head) to get to the intersected node.</li>
+<li><code>skipB</code> - The number of nodes to skip ahead in <code>listB</code> (starting from the head) to get to the intersected node.</li>
+</ul>
+<p>The judge will then create the linked structure based on these inputs and pass the two heads, <code>headA</code> and <code>headB</code> to your program. If you correctly return the intersected node, then your solution will be <strong>accepted</strong>.</p>
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/sun-kaiwei/tukuyan/raw/master/202205161606037.png" alt="" loading="lazy"></figure>
+<pre><code>Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
+Output: Intersected at '8'
+Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists intersect).
+From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
+</code></pre>
+<p>Example 2:</p>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/sun-kaiwei/tukuyan/raw/master/202205161607954.png" alt="" loading="lazy"></figure>
+<pre><code>Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
+Output: Intersected at '2'
+Explanation: The intersected node's value is 2 (note that this must not be 0 if the two lists intersect).
+From the head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.
+</code></pre>
+<p>Example 3:</p>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/sun-kaiwei/tukuyan/raw/master/202205161608763.png" alt="" loading="lazy"></figure>
+<pre><code>Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
+Output: No intersection
+Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.
+Explanation: The two lists do not intersect, so return null.
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes of <code>listA</code> is in the <code>m</code>.</li>
+<li>The number of nodes of <code>listB</code> is in the <code>n</code>.</li>
+<li><code>1 &lt;= m, n &lt;= 3 * 104</code></li>
+<li><code>1 &lt;= Node.val &lt;= 105</code></li>
+<li><code>0 &lt;= skipA &lt; m</code></li>
+<li><code>0 &lt;= skipB &lt; n</code></li>
+<li><code>intersectVal</code> is <code>0</code> if <code>listA</code> and <code>listB</code> do not intersect.</li>
+<li><code>intersectVal == listA[skipA] == listB[skipB]</code> if <code>listA</code> and <code>listB</code> intersect.</li>
+</ul>
+<p><strong>Follow up:</strong> Could you write a solution that runs in <code>O(m + n)</code> time and use only <code>O(1)</code> memory?</p>
+<h2 id="解法一">解法一</h2>
+<p>抛开最后的扩展，使用哈希表是一种办法，将第一个链表的数据存入到哈希表中，然后再遍历第二个链表，当结点在哈希表中则说明，有结点在第一个链表，也就是两者共同的结点，将它输出即可，如没有共同节点，也输出headB即可，因为遍历完此时已经为None。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(m+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>,空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>,链表一的长度</p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -&gt; Optional[ListNode]:
+        s = set()
+        while headA != None:
+            s.add(headA)
+            headA = headA.next
+        while headB != None:
+            if headB in s:
+                return headB
+            headB = headB.next
+        return headB
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>这个解法是双指针的方法，我觉得这种方法和前面的环链表的方法类似。两个指针分别指向两个链表的头部，每次循环都要一起移动一格，如果pA指针已经到None，并且pB不是None，则pA指向headB，同理pB一样，pB指向headA。只有当pA等于pB或者pA和pB同时为None时，循环才结束。</p>
+<ol>
+<li>
+<p>当两个链表相同长时，如果有交集，则同时到达，没有交集，则同时为None；</p>
+</li>
+<li>
+<p>链表A长于链表B时，如果有交集，则在m+n长度之前，一定会相遇，没有相遇则是交换后同时为None</p>
+</li>
+</ol>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n+m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>，因为两个指针最多走完两个链表的长度，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -&gt; Optional[ListNode]:
+        if headA == None or headB == None:
+            return None
+        pA,pB = ListNode(0),ListNode(0)
+        pA.next = headA
+        pB.next = headB
+        while (pA!=pB)and(pA!=None or pB!=None):
+            pA = pA.next
+            pB = pB.next
+            if pA == None and pB != None:
+                pA = headB
+            if pB == None and pA != None:
+                pB = headA
+        return pA
+</code></pre>
+]]></content>
+    </entry>
+</feed>
