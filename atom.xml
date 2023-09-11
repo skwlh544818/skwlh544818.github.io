@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://skwlh544818.github.io</id>
+    <title>skw的小站</title>
+    <updated>2023-09-11T08:45:34.913Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://skwlh544818.github.io"/>
+    <link rel="self" href="https://skwlh544818.github.io/atom.xml"/>
+    <subtitle>欢迎来到我的网站</subtitle>
+    <logo>https://skwlh544818.github.io/images/avatar.png</logo>
+    <icon>https://skwlh544818.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, skw的小站</rights>
+    <entry>
+        <title type="html"><![CDATA[《python编程导论》第七章习题]]></title>
+        <id>https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-qi-zhang-xi-ti/</id>
+        <link href="https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-qi-zhang-xi-ti/">
+        </link>
+        <updated>2022-09-02T10:04:49.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="第七章">第七章</h1>
+<h2 id="71-处理异常">7.1 处理异常</h2>
+<p>实现一个满足以下规范的函数。请使用try-except代码块。</p>
+<pre><code class="language-python">def sumDigits(s):
+	&quot;&quot;&quot;假设s是一个字符串
+	返回s中十进制数字之和
+	例如，如果s是'a2b3c'，则返回5&quot;&quot;&quot;
+</code></pre>
+<p><strong>答案:</strong></p>
+<pre><code class="language-python">def sumDigits(s):
+    &quot;&quot;&quot;假设s是一个字符串
+    返回s中十进制数字之和
+    例如，如果s是'a2b3c'，则返回5&quot;&quot;&quot;
+    sum = 0
+    try:
+        for i in s:
+            if i in &quot;0123456789&quot;:
+                sum += int(i)
+        return sum
+    except TypeError:
+        print(s,&quot;is not string type&quot;)
+</code></pre>
+<h2 id="72-将异常用作控制流">7.2 将异常用作控制流</h2>
+<p>实现一个满足以下规范的函数。</p>
+<pre><code class="language-python">def findAnEven(L):
+    &quot;&quot;&quot;假设L是一个整数列表
+    返回L中的第一个偶数
+    如果L中没有偶数，则抛出ValueError异常&quot;&quot;&quot;
+</code></pre>
+<p><strong>答案</strong></p>
+<pre><code class="language-python">def findAnEven(L):
+    &quot;&quot;&quot;假设L是一个整数列表
+    返回L中的第一个偶数
+    如果L中没有偶数，则抛出ValueError异常&quot;&quot;&quot;
+    flag = True
+    for i in L:
+        if i%2 == 0:
+            return i
+    if flag == True:
+        raise ValueError(&quot;There is no even in&quot;,L)
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[《python编程导论》第四章习题]]></title>
+        <id>https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-si-zhang-xi-ti/</id>
+        <link href="https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-si-zhang-xi-ti/">
+        </link>
+        <updated>2022-08-14T13:26:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="第四章">第四章</h1>
+<h2 id="41-函数与作用域">4.1 函数与作用域</h2>
+<p>编写一个函数isIn，接受两个字符串作为参数，如果一个字符串是另一个字符串的一部分，返回True，否则返回False。提示：你可以使用内置的str类型的操作符in。</p>
+<p><strong>答案：</strong></p>
+<pre><code class="language-python">def isIn(s1,s2):
+    &quot;&quot;&quot;
+    s1 and s2 is the str type
+    return the boolen type to explain weather one string is the subsection of the other one
+    &quot;&quot;&quot;
+    return s1 in s2 or s2 in s1
+</code></pre>
+<h2 id="43-递归">4.3 递归</h2>
+<p>如果使用如下代码的函数fib计算fib(5)，那么需要计算多少次fib(2)的值？</p>
+<pre><code class="language-python">def fib(n):
+	&quot;&quot;&quot;假定n是正整数
+	返回第n个斐波那契数&quot;&quot;&quot;
+	if n == 0 or n == 1:
+		return 1
+	else:
+		return fib(n-1) + fib(n-2)
+def testFib(n):
+	for i in range(n+1):
+		print('fib of', i, '=', fib(i))
+</code></pre>
+<p><strong>答案：</strong></p>
+<p>需要计算3次</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/08/14/pPwLqSJXTOrDhoY.png" alt="image-20220814212426229" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[《python编程导论》第三章练习]]></title>
+        <id>https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-san-zhang-lian-xi-da-an/</id>
+        <link href="https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-san-zhang-lian-xi-da-an/">
+        </link>
+        <updated>2022-08-13T06:38:18.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="第三章">第三章</h1>
+<h2 id="31-穷举法">3.1 穷举法</h2>
+<p>编写一个程序，要求用户输入一个整数，然后输出两个整数root和pwr，满足0 &lt;pwr &lt; 6，并且root**pwr等于用户输入的整数。如果不存在这样一对整数，则输出一条消息进行说明。</p>
+<p><strong>答案：</strong></p>
+<pre><code class="language-python">x = int(input(&quot;Enter a integer:&quot;))
+root = 0
+while root &lt;= abs(x):
+    pwr = 1
+    while pwr &lt; 6:
+        if x&lt;0:
+            temp = -root
+        else:
+            temp = root
+        if temp**pwr == x:
+            print(temp,&quot;**&quot;,pwr,&quot;=&quot;,x)
+        pwr += 1
+    root += 1
+</code></pre>
+<h2 id="32-for循环">3.2 for循环</h2>
+<p>假设s是包含多个小数的字符串，由逗号隔开，如s = '1.23, 2.4, 3.123'。编写一个程序，输出s中所有数值的和。</p>
+<p><strong>答案：</strong></p>
+<pre><code class="language-python">s = input(&quot;请输入由逗号隔开的小数字符串:&quot;)
+# one simple solution
+s_list = s.split(',')
+total_num = 0.0
+for i in s_list:
+    total_num += float(i)
+print(&quot;the total number of s is:&quot;,total_num)
+# other solution,don't use split and list
+li_s = ''
+total_num = 0.0
+for char in s:
+    if char != ',':
+        li_s = li_s + char
+    else:
+        total_num += float(li_s)
+        li_s = ''
+total_num += float(li_s)
+print(&quot;the total number of s is:&quot;,total_num)
+</code></pre>
+<h2 id="33-近似解和二分查找">3.3 近似解和二分查找</h2>
+<ol>
+<li>
+<p>如果语句x = 25被替换为x = -25，代码会如何运行？</p>
+<pre><code class="language-python">x = 25
+epsilon = 0.01
+numGuesses = 0
+low = 0.0
+high = max(1.0, x)
+ans = (high + low)/2.0
+while abs(ans**2 - x) &gt;= epsilon:
+	print('low =', low, 'high =', high, 'ans =', ans)
+	numGuesses += 1
+	if ans**2 &lt; x:
+		low = ans
+	else:
+		high = ans
+	ans = (high + low)/2.0
+print('numGuesses =', numGuesses)
+print(ans, 'is close to square root of', x)
+</code></pre>
+<p><strong>答案：</strong></p>
+<p>如果将x=25替换成x=-25，那么代码会无线循环下去，因为在while循环的判断条件<code>abs(ans**2 - x) &gt;= epsilon</code>恒为真。</p>
+</li>
+<li>
+<p>如何修改上述代码，才能求出一个数的立方根？这个数既可以是正数，也可以是负数。（提示：修改low保证答案位于待查找区域。）</p>
+<p><strong>答案：</strong></p>
+<pre><code class="language-python">x = float(input(&quot;please enter a integer:&quot;))
+epsilon = 0.01
+numGuesses = 0
+low = min(-1.0,x)
+high = max(1.0, abs(x))
+ans = (high + low)/2.0
+while abs(ans**3 - x) &gt;= epsilon:
+	print('low =', low, 'high =', high, 'ans =', ans)
+	numGuesses += 1
+	if ans**3 &lt; x:
+		low = ans
+	else:
+		high = ans
+	ans = (high + low)/2.0
+print('numGuesses =', numGuesses)
+print(ans, 'is close to square root of', x)
+</code></pre>
+</li>
+</ol>
+<h2 id="34-关于浮点数">3.4 关于浮点数</h2>
+<p>二进制数10011等于十进制中的哪个数？</p>
+<p>**答案：**19</p>
+<h2 id="35-牛顿-拉弗森法">3.5 牛顿-拉弗森法</h2>
+<p>在牛顿·拉弗森法的实现中添加一些代码，跟踪求平方根所用的迭代次数。在这段代码的基础上编写一个程序，比较牛顿·拉弗森法和二分查找法的效率（你会发现牛顿·拉弗森法效率更高）。</p>
+<p><strong>答案：</strong></p>
+<blockquote>
+<p>牛顿·拉弗森法求实数根实际就是梯度下降，公式是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>−</mo><mfrac><mrow><mi>g</mi><mo>(</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow><mrow><msup><mi>g</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">x_i = x_{i-1}-\frac{g(x_{i-1})}{g&#x27;(x_{i-1})}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.791661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32808571428571426em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.20252142857142857em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32808571428571426em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.20252142857142857em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+</blockquote>
+<pre><code class="language-python">epsilon = 0.01
+k = 25.0
+guess = k/2.0
+while abs(guess**2-k)&gt;=epsilon:
+    guess = guess-(guess**2-k)/(2*guess)
+print('Square root of',k,'is about',guess)
+</code></pre>
+<p>比较效率代码：</p>
+<pre><code class="language-python"># bisection search
+x = 25
+epsilon = 0.01
+numGuesses = 0
+low = 0.0
+high = max(1.0, x)
+ans = (high + low)/2.0
+while abs(ans**2 - x) &gt;= epsilon:
+	numGuesses += 1
+	if ans**2 &lt; x:
+		low = ans
+	else:
+		high = ans
+	ans = (high + low)/2.0
+print('the bisection search numGuesses =', numGuesses)
+
+# newton solution
+epsilon = 0.01
+k = 25.0
+guess = k/2.0
+numGuess = 0
+while abs(guess**2-k)&gt;=epsilon:
+    numGuess += 1
+    guess = guess-(guess**2-k)/(2*guess)
+print(&quot;the newton search numGuess =&quot;,numGuess)
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[docker中命令行安装Matlab2021a的Linux版本]]></title>
+        <id>https://skwlh544818.github.io/post/docker-zhong-ming-ling-xing-an-zhuang-matlab2021a-de-linux-ban-ben/</id>
+        <link href="https://skwlh544818.github.io/post/docker-zhong-ming-ling-xing-an-zhuang-matlab2021a-de-linux-ban-ben/">
+        </link>
+        <updated>2022-08-13T05:20:59.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="docker中命令行安装matlab2021a的linux版本">docker中命令行安装Matlab2021a的Linux版本</h1>
+<h2 id="docker环境配置">docker环境配置</h2>
+<p>在docker中安装Matlab2021a的linux版本的最大困难是会出现这个错误：</p>
+<blockquote>
+<h1 id="mount-failed-operation-not-permitted">mount failed: Operation not permitted.</h1>
+</blockquote>
+<p>这个只需要在启动docker时使用<code>--privileged=True</code>就可以了，或者就是在创建docker时加上。</p>
+<pre><code class="language-shell">docker start &lt;容器名&gt; --privileged=True 
+or
+nvidia-docker run -t -p 8880:22 --name=&quot;skw&quot; --privileged=True -v /home/skw:/home -it &lt;镜像&gt; bash 
+</code></pre>
+<h2 id="matlab2021a镜像">Matlab2021a镜像</h2>
+<p><a href="https://pan.baidu.com/s/1oj4piJcHFYL7qFnMCG6xQg">Matlab的2021a镜像以及破解工具</a>，提取码：2233</p>
+<p>下载的镜像文件和license上传到自己的文件夹就行，这里展示时放在了<code>/root</code>的目录下，确保文件夹中有以下文件：</p>
+<ol>
+<li>Matlab910R2021a_Lin64.iso</li>
+<li>Crack.zip</li>
+</ol>
+<p>第一个文件比较大，如果百度网盘限速的话，可以使用aria2配合油猴的百度网盘直链插件就可以飞速下载。Ubuntu安装aria2可以使用以下命令安装。</p>
+<pre><code class="language-shell">sudo apt-get install aria2
+</code></pre>
+<h2 id="准备工作">准备工作</h2>
+<pre><code class="language-shell">cd /root # 切换到自己的目录，也就是文件在的目录
+sudo mkdir -p /usr/local/matlab/R2021a/license # 新建安装目录
+mkdir matlab # 新建挂载目录，挂载需要一个能够存储该镜像大小的文件夹，注意硬盘容量
+sudo mount Matlab910R2021a_Lin64.iso # 挂载ISO镜像文件
+unzip Crack.zip # 解压license文件夹
+sudo cp -p Crack/*.lic /usr/local/matlab/R2021a/license # 复制license到安装目录
+sudo cp -p matlab/installer_input.txt /usr/local/matlab # 复制installer_input.txt到安装目录
+sudo vim /usr/local/matlab/installer_input.txt # 修改安装信息
+</code></pre>
+<pre><code class="language-shell">destinationFolder=/usr/local/matlab/R2021a # 安装目录
+fileInstallationKey=09806-07443-53955-64350-21751-41297 # 序列号
+agreeToLicense=yes # 同意协议
+outputFile=/tmp/mathworks_install.log # 日志输出文件
+</code></pre>
+<h2 id="安装">安装</h2>
+<pre><code class="language-shell">sudo matlab/install -inputFile /usr/local/matlab/installer_input.txt # 默认静默安装，没有输出
+cat /tmp/mathworks_install.log # 查看日志是否安装成功
+</code></pre>
+<h2 id="激活">激活</h2>
+<pre><code class="language-shell">cd /usr/local/matlab # 切换新建的安装目录
+sudo cp -p R2021a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so R2021a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so.old # 将原先的.so文件备份
+sudo cp -p ~/Crack/libmwlmgrimpl.so R2021a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/ # 将破解的.so文件复制到原先目录下
+sudo chmod 555 R2021a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so # 修改.so的权限
+sudo vim activate.ini # 新建并修改activate.ini文件
+</code></pre>
+<pre><code class="language-shell">isSilent=true # 静默模式
+activateCommand=activateOffline # 离线激活
+licenseFile=/usr/local/matlab/R2021a/license/license_standalone.lic # 许可三选一
+</code></pre>
+<pre><code class="language-shell">sudo R2021a/bin/activate_matlab.sh -propertiesFile /usr/local/matlab/activate.ini #运行matlab的激活脚本
+</code></pre>
+<h2 id="配置matlab-runtime">配置Matlab Runtime</h2>
+<p>Matlab不同版本对应的Runtime并不相同，可以在[官网](<a href="https://ww2.mathworks.cn/products/compiler/matlab-runtime.html">MATLAB Runtime - MATLAB Compiler - MATLAB (mathworks.cn)</a>)上查询相对应的版本下载。2021a的对应版本是9.10，也已经放到云盘里了。</p>
+<pre><code class="language-shell">wget https://ssd.mathworks.com/supportfiles/downloads/R2021a/Release/7/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2021a_Update_7_glnxa64.zip # 使用wget下载也可以使用百度云盘
+unzip MATLAB_Runtime_R2021a_Update_7_glnxa64.zip # 解压压缩包
+./install -mode silent -agreeToLicense yes # 安装
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/MATLAB/MATLAB_Runtime/v910/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v910/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v910/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v910/extern/bin/glnxa64 # 配置linux环境变量
+</code></pre>
+<p>每次使用都要重新配置最后的环境变量，也可以写进配置文件中：</p>
+<pre><code class="language-shell">vim ~/bashrc
+</code></pre>
+<pre><code class="language-shell">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/MATLAB/MATLAB_Runtime/v910/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v910/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v910/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v910/extern/bin/glnxa64
+</code></pre>
+<pre><code class="language-shell">source ~/bashrc
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[《python编程导论》第二章习题]]></title>
+        <id>https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-er-zhang-xi-ti/</id>
+        <link href="https://skwlh544818.github.io/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-er-zhang-xi-ti/">
+        </link>
+        <updated>2022-08-11T07:40:05.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="第二章">第二章</h1>
+<h2 id="22-程序分支">2.2 程序分支</h2>
+<p>编写一个程序，检查3个变量x、y和z，输出其中最大的奇数。如果其中没有奇数，就输出一个消息进行说明</p>
+<p><strong>答案：</strong></p>
+<pre><code class="language-python">import numpy as np
+x = int(input(&quot;Enter number x:&quot;))
+y = int(input(&quot;Enter number y:&quot;))
+z = int(input(&quot;Enter number z:&quot;))
+max_num = 0
+if x%2 == 1 and x&gt;max_num:
+    max_num=x
+if y%2 == 1 and y&gt;max_num:
+    max_num = y
+if z%2 == 1 and z&gt;max_num:
+    max_num = z
+if max_num!=0:
+    print(&quot;the max jishu is &quot;,max_num)
+else:
+    print(&quot;there is no jishu!&quot;)
+</code></pre>
+<h2 id="24-迭代">2.4 迭代</h2>
+<ol>
+<li>
+<p>将以下代码中的注释替换为while循环语句。</p>
+<pre><code class="language-python">numXs = int(input('How many times should I print the letter X? '))
+toPrint = ''
+#concatenate X to toPrint numXs times
+print(toPrint)
+</code></pre>
+<p><strong>答案：</strong></p>
+<pre><code class="language-python">numXs = int(input('How many times should I print the letter X? '))
+toPrint = ''
+while numXs&gt;0:
+    toPrint = toPrint+'X'
+    numXs-=1
+print(toPrint)
+</code></pre>
+</li>
+<li>
+<p>编写一个程序，要求用户输入10个整数，然后输出其中最大的奇数。如果用户没有输入奇数，则输出一个消息进行说明。</p>
+<p><strong>答案：</strong></p>
+<pre><code class="language-python">max_num = 0  
+for i in range(10):
+    x = int(input(&quot;please input a number:&quot;))
+    if x%2==1 and x&gt;max_num:
+        max_num = x
+if max_num != 0:
+    print(&quot;the max jishu is &quot;,max_num)
+else:
+    print(&quot;there is no jishu!&quot;)
+</code></pre>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[3. Longest Substring Without Repeating Characters]]></title>
+        <id>https://skwlh544818.github.io/post/3-longest-substring-without-repeating-characters/</id>
+        <link href="https://skwlh544818.github.io/post/3-longest-substring-without-repeating-characters/">
+        </link>
+        <updated>2022-05-21T04:27:07.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</h1>
+<h2 id="问题">问题</h2>
+<p>Given a string <code>s</code>, find the length of the <strong>longest substring</strong> without repeating characters.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="3-longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</h1>
+<h2 id="问题">问题</h2>
+<p>Given a string <code>s</code>, find the length of the <strong>longest substring</strong> without repeating characters.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<pre><code>Input: s = &quot;abcabcbb&quot;
+Output: 3
+Explanation: The answer is &quot;abc&quot;, with the length of 3.
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: s = &quot;bbbbb&quot;
+Output: 1
+Explanation: The answer is &quot;b&quot;, with the length of 1.
+</code></pre>
+<p>Example 3:</p>
+<pre><code>Input: s = &quot;pwwkew&quot;
+Output: 3
+Explanation: The answer is &quot;wke&quot;, with the length of 3.
+Notice that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li><code>0 &lt;= s.length &lt;= 5 * 104</code></li>
+<li><code>s</code> consists of English letters, digits, symbols and spaces.</li>
+</ul>
+<h2 id="解法一">解法一</h2>
+<p>这个解法就是使用一个列表保存当前子串的字母，如果当前字母不在列表中，则保存下来。如果在列表中，则将从开头到重复字母的所有字段全部去掉，然后再将当前字母加入。在排出字段前，会测量列表的长度，来和维护的最大长度进行比较。最后输出最大的无重复子串。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">class Solution:
+    def lengthOfLongestSubstring(self, s: str) -&gt; int:
+        l = []
+        maxl = 0
+        for i in s:
+            if i not in l:
+                l.append(i)
+            else:
+                if len(l)&gt;maxl:
+                    maxl = len(l)
+                while i in l:
+                    l.pop(0)
+                l.append(i)
+        if len(l)&gt;maxl:
+            maxl = len(l)
+        return maxl
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>这种方法是使用字典的方式存储每个字母和它对应的索引值，如果当前字母在字典中，并且上次出现的下标大于当前长度的起始下标，那么起始下标就转变成上次出现的下标，并将当前字母的索引改为最新的。如果不在字典中，那么将当前数字保存到字典中，并且计算当前的长度是否超过了最大长度。</p>
+<blockquote>
+<p>这个理解起来确实很有难度。</p>
+</blockquote>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">class Solution:
+    def lengthOfLongestSubstring(self, s: str) -&gt; int:
+        d = {}
+        k,maxl = -1,0
+        for i,c in enumerate(s):
+            if c in d and d[c]&gt;k:
+                k = d[c]
+                d[c] = i
+            else:
+                d[c] = i
+                maxl = max(maxl,d[c]-k)
+        return maxl
+                
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2. Add Two Numbers]]></title>
+        <id>https://skwlh544818.github.io/post/2-add-two-numbers/</id>
+        <link href="https://skwlh544818.github.io/post/2-add-two-numbers/">
+        </link>
+        <updated>2022-05-20T10:25:48.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="2-add-two-numbers">2. Add Two Numbers</h1>
+<h2 id="问题">问题</h2>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="2-add-two-numbers">2. Add Two Numbers</h1>
+<h2 id="问题">问题</h2>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/05/20/5tcrNKz21X8MPCA.png" alt="" loading="lazy"></figure>
+<pre><code>Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: l1 = [0], l2 = [0]
+Output: [0]
+</code></pre>
+<p>Example 3:</p>
+<pre><code>Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes in each linked list is in the range <code>[1, 100]</code>.</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
+<li>It is guaranteed that the list represents a number that does not have leading zeros.</li>
+</ul>
+<h2 id="解法一">解法一</h2>
+<p>迭代的方法是将每个链表的数值还原成真实的数字，然后相加得到真实的结果，然后创建一个链表用来保存每一位数。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>M</mi><mo>+</mo><mi>N</mi><mo>+</mo><mi>K</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(M+N+K)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>是l1的长度，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>是l2的长度，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>是输出链表的长度，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:
+        sum = 0
+        i = 1
+        while l1!= None:
+            sum = l1.val*i+sum
+            l1 = l1.next
+            i*=10
+        i = 1
+        while l2!=None:
+            sum = l2.val*i + sum
+            l2 = l2.next
+            i*=10
+        l3 = ListNode()
+        l = ListNode(next = l3)
+        if sum == 0:return l3
+        while sum != 0:
+            temp = ListNode(sum%10)
+            l3.next = temp
+            l3 = l3.next
+            sum = sum//10
+        return l.next.next
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>另外一种迭代的方法，如果两个都不为None，则一直迭代，迭代的过程则需要一位c来表示进位，两个节点的值相加以及前一个进位求和，结果对10的余数保存成新的链表的结点，结果除以十的商表示当前进位。当一个已经为None时，则只循环另外一个不为None的。最后如果进位为0，则不加新的节点，如果不为零，则加一个新的节点。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>M</mi><mo>+</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(M+N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:
+        c = 0
+        l3 = ListNode()
+        l = ListNode(next = l3)
+        while l1!=None and l2!=None:
+            temp = ListNode((l1.val+l2.val+c)%10)
+            c = (l1.val+l2.val+c)//10
+            l1 = l1.next
+            l2 = l2.next
+            l3.next = temp
+            l3 = l3.next
+        if l1 == None:
+            while l2 !=None:
+                temp = ListNode((l2.val+c)%10)
+                c = (l2.val+c)//10
+                l2 = l2.next
+                l3.next = temp
+                l3 = l3.next
+        else:
+            while l1 !=None:
+                temp = ListNode((l1.val+c)%10)
+                c = (l1.val+c)//10
+                l1 = l1.next
+                l3.next = temp
+                l3 = l3.next
+        if c != 0:
+            l3.next = ListNode(c%10)
+        return l.next.next
+        
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[543. Diameter of Binary Tree]]></title>
+        <id>https://skwlh544818.github.io/post/543-diameter-of-binary-tree/</id>
+        <link href="https://skwlh544818.github.io/post/543-diameter-of-binary-tree/">
+        </link>
+        <updated>2022-05-20T06:51:21.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="543-diameter-of-binary-tree">543. Diameter of Binary Tree</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>root</code> of a binary tree, return <em>the length of the <strong>diameter</strong> of the tree</em>.</p>
+<p>The <strong>diameter</strong> of a binary tree is the <strong>length</strong> of the longest path between any two nodes in a tree. This path may or may not pass through the <code>root</code>.</p>
+<p>The <strong>length</strong> of a path between two nodes is represented by the number of edges between them.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="543-diameter-of-binary-tree">543. Diameter of Binary Tree</h1>
+<h2 id="问题">问题</h2>
+<p>Given the <code>root</code> of a binary tree, return <em>the length of the <strong>diameter</strong> of the tree</em>.</p>
+<p>The <strong>diameter</strong> of a binary tree is the <strong>length</strong> of the longest path between any two nodes in a tree. This path may or may not pass through the <code>root</code>.</p>
+<p>The <strong>length</strong> of a path between two nodes is represented by the number of edges between them.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.loli.net/2022/05/20/gtOE3BYMvWUC9uh.png" alt="" loading="lazy"></figure>
+<pre><code>Input: root = [1,2,3,4,5]
+Output: 3
+Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: root = [1,2]
+Output: 1
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li>The number of nodes in the tree is in the range <code>[1, 104]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
+<h2 id="解法">解法</h2>
+<p>深度优先遍历的递归算法，我们迭代可以计算从左子树到root的最长距离，并且计算右子树到root的最长距离，期间一直维护最大的距离，也就是左子树的最大距离加上右子树的最大距离。如果其和大于维护的最大距离，则替换，每次递归输出的则都是左子树和右子树中的最大值。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，n是节点的个数.</p>
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -&gt; int:
+        self.maxd = 0
+        def depth(root):
+            if root == None : return 0
+            left = depth(root.left)+1
+            right = depth(root.right)+1
+            if self.maxd &lt; left+right:
+                self.maxd = left+right-2
+            return max(left,right)
+        depth(root)
+        return self.maxd
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[338. Counting Bits]]></title>
+        <id>https://skwlh544818.github.io/post/338-counting-bits/</id>
+        <link href="https://skwlh544818.github.io/post/338-counting-bits/">
+        </link>
+        <updated>2022-05-20T05:10:04.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="338-counting-bits">338. Counting Bits</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer <code>n</code>, return <em>an array</em> <code>ans</code> <em>of length</em> <code>n + 1</code> <em>such that for each</em> <code>i</code> (<code>0 &lt;= i &lt;= n</code>)<em>,</em> <code>ans[i]</code> <em>is the <strong>number of</strong></em> <code>1</code><em><strong>'s</strong> in the binary representation of</em> <code>i</code>.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="338-counting-bits">338. Counting Bits</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer <code>n</code>, return <em>an array</em> <code>ans</code> <em>of length</em> <code>n + 1</code> <em>such that for each</em> <code>i</code> (<code>0 &lt;= i &lt;= n</code>)<em>,</em> <code>ans[i]</code> <em>is the <strong>number of</strong></em> <code>1</code><em><strong>'s</strong> in the binary representation of</em> <code>i</code>.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<pre><code>Input: n = 2
+Output: [0,1,1]
+Explanation:
+0 --&gt; 0
+1 --&gt; 1
+2 --&gt; 10
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: n = 5
+Output: [0,1,1,2,1,2]
+Explanation:
+0 --&gt; 0
+1 --&gt; 1
+2 --&gt; 10
+3 --&gt; 11
+4 --&gt; 100
+5 --&gt; 101
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li><code>0 &lt;= n &lt;= 105</code></li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>It is very easy to come up with a solution with a runtime of <code>O(n log n)</code>. Can you do it in linear time <code>O(n)</code> and possibly in a single pass?</li>
+<li>Can you do it without using any built-in function (i.e., like <code>__builtin_popcount</code> in C++)?</li>
+</ul>
+<h2 id="解法一">解法一</h2>
+<p>第一种解法就是创建一个数组，然后遍历0-n的每个数，然后判断每个数除以2的余数，然后再除以2之后继续求余，每个余数判断为一的个数。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-python">def countBits(n: int):
+    ans = []
+    for i in range(n+1):
+        sum = 0
+        while i != 0:
+            if i%2==1:
+                sum+=1
+            i = i//2
+        ans.append(sum)
+    return ans
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>第二种解法是动态规划的方法，通过分析可以得到数字<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>(</mo><msup><mn>2</mn><mi>j</mi></msup><mo>≤</mo><mi>i</mi><mo>&lt;</mo><msup><mn>2</mn><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">i(2^j\leq i&lt;2^{j+1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0746639999999998em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69862em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.0746639999999998em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的二进制1的个数等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><msup><mn>2</mn><mi>j</mi></msup></mrow><annotation encoding="application/x-tex">i-2^j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span></span></span></span></span></span></span>的1的个数加一。并且我们知道0没有二进制1的个数，1有1个。这样就能够循环求得到数字n的1的个数。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python">class Solution:
+    def countBits(self, n: int) -&gt; List[int]:
+        ans = [0 for i in range(n+1) ]
+        j = 0
+        i = 1
+        while i &lt;= n:
+            while i &gt;= 2**j and i&lt;2**(j+1):
+                ans[i] = ans[i-2**j]+1
+                i+=1
+                if i &gt; n:break
+            j+=1
+        return ans
+            
+</code></pre>
+<h2 id="解法三">解法三</h2>
+<p>记录一种方法，令 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mi mathvariant="normal">&amp;</mi><mo>(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">y=x\&amp;(x-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mord">&amp;</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，则 y 为将 x 的最低位的1从 1 变成 0 之后的数.显然 0≤y&lt;x，bits[x]=bits[y]+1。因此对任意正整数 x，都有bits[x]=bits[x &amp; (x−1)]+1。遍历从 1 到 n 的每个正整数 i，计算 bits 的值。最终得到的数组 bits 即为答案。</p>
+<p>时间复杂度是O(n)，空间复杂度是O(n)。</p>
+<pre><code class="language-python">class Solution:
+    def countBits(self, n: int) -&gt; List[int]:
+        ans = [0]
+        for i in range(1,n+1):
+            ans.append(ans[i&amp;(i-1)]+1)
+        return ans
+            
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[283. Move Zeroes]]></title>
+        <id>https://skwlh544818.github.io/post/283-move-zeroes/</id>
+        <link href="https://skwlh544818.github.io/post/283-move-zeroes/">
+        </link>
+        <updated>2022-05-19T12:06:12.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="283-move-zeroes">283. Move Zeroes</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer array <code>nums</code>, move all <code>0</code>'s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p><strong>Note</strong> that you must do this in-place without making a copy of the array.</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="283-move-zeroes">283. Move Zeroes</h1>
+<h2 id="问题">问题</h2>
+<p>Given an integer array <code>nums</code>, move all <code>0</code>'s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p><strong>Note</strong> that you must do this in-place without making a copy of the array.</p>
+<!-- more -->
+<h2 id="例子">例子</h2>
+<p>Example 1：</p>
+<pre><code>Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+</code></pre>
+<p>Example 2:</p>
+<pre><code>Input: nums = [0]
+Output: [0]
+</code></pre>
+<h2 id="限制">限制</h2>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 104</code></li>
+<li><code>-231 &lt;= nums[i] &lt;= 231 - 1</code></li>
+</ul>
+<p><strong>Follow up:</strong> Could you minimize the total number of operations done?</p>
+<h2 id="解法一">解法一</h2>
+<p>简单粗暴的解法就是将原数组中的全部的0删除掉，然后再后面补零。</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python">class Solution:
+    def moveZeroes(self, nums: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        i = 0
+        while 0 in nums:
+            nums.remove(0)
+            i+=1
+        for j in range(i):
+            nums.append(0)
+        
+</code></pre>
+<h2 id="解法二">解法二</h2>
+<p>这种方法使用双指针方法，左指针指向处理完毕的序列的下一位，右指针指向待处理的序列的首位，如果右指针指向的数字不为0，那么交换左右指针的数字，然后左指针加一。处理完毕后右指针加一。这样两个指针中间都是0.</p>
+<p>时间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<pre><code class="language-python">class Solution:
+    def moveZeroes(self, nums: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        n = len(nums)
+        left,right = 0,0
+        while right &lt; n:
+            if nums[right]!=0:
+                nums[left],nums[right]=nums[right],nums[left]
+                left += 1
+            right +=1
+</code></pre>
+]]></content>
+    </entry>
+</feed>
