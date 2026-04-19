@@ -1,8 +1,60 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
-  <%- include('./_blocks/head', { siteTitle: themeConfig.siteName }) %>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/True.css">
+
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ["\\(", "\\)"]],
+      displayMath: [['$$', '$$'], ["\\[", "\\]"]]
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a', 'annotation', 'annotation-xml'],
+      ignoreHtmlClass: 'tex2jax_ignore|crayon-.*', // 'crayon-' 开头的类，属于Wordpress代码高亮库，这部分不需要处理，否则会导致显示不正确,这部分是正则式，多条之间用'|'分割
+      processHtmlClass: 'tex2jax_process'
+    },
+    //禁用右键菜单	
+    renderActions: {
+      addMenu: [0, '', '']
+    }
+  };
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+<meta name="description" content="AI时代的思考者">
+<meta property="og:site_name" content="LEON HARDT Blog">
+<meta property="og:title" content="LEON HARDT Blog">
+<meta property="og:description" content="AI时代的思考者">
+
+<meta property="og:image" content="mp">
+
+<meta property="og:url" content="https://skwlh544818.github.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LEON HARDT Blog">
+<meta name="twitter:description" content="AI时代的思考者">
+
+<meta name="twitter:image" content="mp">
+
+
+  <title>LEON HARDT Blog</title>
+  
 <meta name="description" content="AI时代的思考者">
 <link rel="canonical" href="https://skwlh544818.github.io/page/4/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"LEON HARDT Blog","url":"https://skwlh544818.github.io","description":"AI时代的思考者","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://skwlh544818.github.io/search?q={search_term_string}"}}</script>
@@ -15,30 +67,454 @@
 <meta name="twitter:title" content="LEON HARDT Blog">
 <meta name="twitter:description" content="AI时代的思考者">
 </head>
+<body class="flavor-theme">
 
-<body>
-  <div class="head-top-line"></div>
-  <div class="header-box">
-    <%- include('./_blocks/header', {active: true, menu: 'home', link: '/'}) %>
+  <header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="top-bar">
+
+      
+      <div class="top-bar__left">
+        
+        <a href="https://skwlh544818.github.io" class="site-avatar-link" aria-label="返回首页">
+          <img class="site-avatar" src="/images/theme/doubao_001.png" alt="LEON HARDT Blog" />
+        </a>
+        
+        <a href="https://skwlh544818.github.io" class="site-name-link">LEON HARDT Blog</a>
+      </div>
+
+      
+      <nav class="top-bar__nav" id="sectionBar">
+        
+        
+        <a class="nav-item" href="/">首页</a>
+        
+        <a class="nav-item" href="/post">博客</a>
+        
+        <a class="nav-item" href="/memos">闪念</a>
+        
+        <a class="nav-item" href="/archives">归档</a>
+        
+        <a class="nav-item" href="/tags">标签</a>
+        
+        <a class="nav-item" href="/links">友链</a>
+        
+        <a class="nav-item" href="/post/about">关于</a>
+        
+        
+      </nav>
+
+      
+      <div class="top-bar__right">
+        <button class="btn-icon btn-search search-btn" id="btnSearch" type="button" aria-label="搜索">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="btn-icon btn-nav-toggle mobile-only" id="btnNavToggle" type="button" aria-label="切换导航">
+          <div class="hamburger" id="hamburger">
+            <span class="hamburger__line hamburger__line--top"></span>
+            <span class="hamburger__line hamburger__line--bottom"></span>
+          </div>
+        </button>
+      </div>
+
+    </div>
   </div>
-  <div class="main-continer">
-    <% let scheme = site.customConfig.scheme || 'pisces' %>
-    <div
-      class="section-layout <%= scheme !== '' ?scheme:'pisces' %> <%= scheme === 'muse' || scheme === 'mist' ?'bg-color':'' %>">
-      <div class="section-layout-wrapper">
-        <%- include('./_blocks/home-sidebar') %>
-        <div class="section-box <%= scheme !==''?scheme:'pisces' %>">
-          <section class="section <%= scheme === 'gemini'?'':'bg-color' %> posts-expand slide-down-in">
-            <%- include('./_blocks/post-list') %>
-            <% let articles = 0; site.posts.forEach(function(post) { if (!post.hideInList) articles++;});%>
-            <%- include('./_blocks/pagination', { logs: articles, pageSize: themeConfig.postPageSize, url: '/page/', index: 4}) %>
-          </section>
+</header>
+
+
+<div class="header-spacer"></div>
+
+<script>
+(function(){
+  var btn = document.getElementById('btnNavToggle');
+  var nav = document.getElementById('sectionBar');
+  var hamburger = document.getElementById('hamburger');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    nav.classList.toggle('top-bar__nav--open');
+    if (hamburger) hamburger.classList.toggle('is-active');
+  });
+  nav.querySelectorAll('.nav-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      nav.classList.remove('top-bar__nav--open');
+      if (hamburger) hamburger.classList.remove('is-active');
+    });
+  });
+})();
+</script>
+
+  <main class="site-main" role="main">
+    
+
+
+
+<section class="hero-section">
+  <img class="hero-image" src="/images/theme/下载.jpg" alt="" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    
+    <h2 class="hero-title clamp-3">AI时代的思考者</h2>
+    
+    
+    <p class="hero-subtitle">什么都关注,每天东想西想</p>
+    
+    
+  </div>
+</section>
+
+
+<div class="container">
+  
+  
+  <section class="section-popular">
+    <div class="section-header">
+      <h2 class="section-title">热门文章</h2>
+      <a href="/post" class="section-more meta-text">查看全部 &rarr;</a>
+    </div>
+    <div class="compact-grid">
+      
+       <article class="post-card post-card--compact">
+  <a href="/post/conda-huan-jing-qian-yi/" class="post-card__inner">
+    <div class="post-card__body">
+      <h3 class="post-card__title clamp-2">conda环境迁移</h3>
+      <div class="post-card__meta meta-text">2022-01-19</div>
+    </div>
+    
+  </a>
+</article>
+  
+       <article class="post-card post-card--compact">
+  <a href="/post/deep-reinforcement-learning-for-imbalanced-classification/" class="post-card__inner">
+    <div class="post-card__body">
+      <h3 class="post-card__title clamp-2">Deep reinforcement learning for imbalanced classification</h3>
+      <div class="post-card__meta meta-text">2022-01-13</div>
+    </div>
+    
+  </a>
+</article>
+  
+       <article class="post-card post-card--compact">
+  <a href="/post/image-classification-by-reinforcement-learning-with-two-state-q-learning/" class="post-card__inner">
+    <div class="post-card__body">
+      <h3 class="post-card__title clamp-2">Image Classification by Reinforcement Learning with Two-State Q-Learning</h3>
+      <div class="post-card__meta meta-text">2022-01-13</div>
+    </div>
+    
+  </a>
+</article>
+  
+       <article class="post-card post-card--compact">
+  <a href="/post/classification-with-costly-features-using-deep-reinforcement-learning/" class="post-card__inner">
+    <div class="post-card__body">
+      <h3 class="post-card__title clamp-2">Classification with Costly Features Using Deep Reinforcement Learning</h3>
+      <div class="post-card__meta meta-text">2022-01-12</div>
+    </div>
+    
+  </a>
+</article>
+  
+        </div>
+  </section>
+  
+
+  <div class="content-grid">
+    <div class="main-content">
+      
+      
+      <section class="section-latest">
+        <div class="section-header">
+          <h2 class="section-title">最新文章</h2>
+        </div>
+        <div class="post-list">
+          
+          <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/conda-huan-jing-qian-yi/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">conda环境迁移</h3>
+    </a>
+    <a href="/post/conda-huan-jing-qian-yi/" class="post-card__excerpt clamp-2">
+      前言
+在国内的一些项目中，需要内网开发程序。python的依赖库，比如numpy等也需要离线安装。其中的一个办法是拿离线安装包一个一个下载并导入内网里安装，还有一个方法就是在本机上安装anaconda并配置好环境，然后将整个anaco...
+    </a>
+    <div class="post-card__meta meta-text">
+      2022-01-19
+      
+    </div>
+  </div>
+  
+</article>
+
+          
+          <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/deep-reinforcement-learning-for-imbalanced-classification/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Deep reinforcement learning for imbalanced classification</h3>
+    </a>
+    <a href="/post/deep-reinforcement-learning-for-imbalanced-classification/" class="post-card__excerpt clamp-2">
+      處理的問題
+本文主要處理的問題是數據樣本各類別分佈不平衡的問題，分佈高度不平衡時對分類的效果有很大的影響。
+解決方案
+本文的一個處理方案就是使用强化學習來學習樣本分佈特徵，對分佈較少的類別基於的獎勵也越大，分佈多的樣本獎勵比較小。其網...
+    </a>
+    <div class="post-card__meta meta-text">
+      2022-01-13
+      
+    </div>
+  </div>
+  
+</article>
+
+          
+          <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/image-classification-by-reinforcement-learning-with-two-state-q-learning/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Image Classification by Reinforcement Learning with Two-State Q-Learning</h3>
+    </a>
+    <a href="/post/image-classification-by-reinforcement-learning-with-two-state-q-learning/" class="post-card__excerpt clamp-2">
+      解决的问题
+本文主要解决其他强化学习解决分类问题面临维度高等问题，并且提升了精度。
+提出的方法
+本文提出了一种简单高效的基于深度学习和强化学习的混合分类器，仅使用两个状态和两/三个动作。
+创新点：
+
+首次提出基于强化学习的图像识别技术...
+    </a>
+    <div class="post-card__meta meta-text">
+      2022-01-13
+      
+    </div>
+  </div>
+  
+</article>
+
+          
+          <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/classification-with-costly-features-using-deep-reinforcement-learning/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">Classification with Costly Features Using Deep Reinforcement Learning</h3>
+    </a>
+    <a href="/post/classification-with-costly-features-using-deep-reinforcement-learning/" class="post-card__excerpt clamp-2">
+      处理的问题
+本文的应用场景是代价特征分类问题，即算法即需要最小化预期分类的错误，也需要最小化预期产生的成本。需要在二者之间取得一个平衡。
+代码
+解决的方法
+本文提出的一个方法是将强化学习用来顺序选择特征。主要还是 DQN
+环境设计
+...
+    </a>
+    <div class="post-card__meta meta-text">
+      2022-01-12
+      
+    </div>
+  </div>
+  
+</article>
+
+          
+          <article class="post-card post-card--list">
+  <div class="post-card__body">
+    <a href="/post/ji-qi-xue-xi-ji-chu/" class="post-card__title-link">
+      <h3 class="post-card__title clamp-3">机器学习基础</h3>
+    </a>
+    <a href="/post/ji-qi-xue-xi-ji-chu/" class="post-card__excerpt clamp-2">
+      机器学习步骤
+
+收集数据
+
+
+制作网络爬虫从网站上抽取数据、从RSS反馈或者API中得到信息、设备发送过来的实测数据，   主要使用公开可用的数据源。
+
+
+准备输出数据
+
+
+确保数据格式符合要求，采用的格式是Python 语言的列表。...
+    </a>
+    <div class="post-card__meta meta-text">
+      2022-01-05
+      
+    </div>
+  </div>
+  
+</article>
+
+          
+        </div>
+      </section>
+      
+
+      
+      
+    </div>
+
+    
+    
+    <aside class="sidebar">
+      <div class="sidebar__section sidebar__about">
+        
+        <img class="sidebar__avatar" src="mp" alt="LEON HARDT Blog" />
+        
+        <h3 class="sidebar__title">LEON HARDT Blog</h3>
+        
+        <p class="sidebar__desc">AI时代的思考者</p>
+        
+        
+      </div>
+
+      
+      <div class="sidebar__section">
+        <h4 class="sidebar__section-title meta-text">标签</h4>
+        <div class="sidebar__tags">
+          
+          <a href="/tag/leetcode/" class="tag-pill">Leetcode</a>
+          
+          <a href="/tag/zi-fu-chuan/" class="tag-pill">字符串</a>
+          
+          <a href="/tag/linux/" class="tag-pill">linux</a>
+          
+          <a href="/tag/中序遍历/" class="tag-pill">中序遍历</a>
+          
+          <a href="/tag/二分法/" class="tag-pill">二分法</a>
+          
+          <a href="/tag/环境配置/" class="tag-pill">环境配置</a>
+          
+          <a href="/tag/链表/" class="tag-pill">链表</a>
+          
+          <a href="/tag/二叉树/" class="tag-pill">二叉树</a>
+          
+          <a href="/tag/动态规划/" class="tag-pill">动态规划</a>
+          
+          <a href="/tag/投票法/" class="tag-pill">投票法</a>
+          
+          <a href="/tag/强化学习/" class="tag-pill">强化学习</a>
+          
+          <a href="/tag/《python编程导论》/" class="tag-pill">《python编程导论》</a>
+          
+          <a href="/tag/双指针/" class="tag-pill">双指针</a>
+          
+          <a href="/tag/BFS/" class="tag-pill">BFS</a>
+          
+          <a href="/tag/分类/" class="tag-pill">分类</a>
+          
+          <a href="/tag/机器学习/" class="tag-pill">机器学习</a>
+          
+          <a href="/tag/DFS/" class="tag-pill">DFS</a>
+          
+          <a href="/tag/位运算/" class="tag-pill">位运算</a>
+          
+          <a href="/tag/分治法/" class="tag-pill">分治法</a>
+          
+          <a href="/tag/栈/" class="tag-pill">栈</a>
+          
+          <a href="/tag/论文/" class="tag-pill">论文</a>
+          
+          <a href="/tag/matlab环境配置/" class="tag-pill">matlab环境配置</a>
+          
         </div>
       </div>
-    </div>
-    <%- include('./_blocks/footer') %>
+      
+    </aside>
+    
   </div>
-</body>
-<%- include('./_blocks/after-body') %>
+</div>
 
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+
+    
+    
+    <nav class="footer-nav" aria-label="页脚导航">
+      
+      <a class="footer-nav__link" href="/">首页</a>
+      
+      <a class="footer-nav__link" href="/post">博客</a>
+      
+      <a class="footer-nav__link" href="/memos">闪念</a>
+      
+      <a class="footer-nav__link" href="/archives">归档</a>
+      
+      <a class="footer-nav__link" href="/tags">标签</a>
+      
+      <a class="footer-nav__link" href="/links">友链</a>
+      
+      <a class="footer-nav__link" href="/post/about">关于</a>
+      
+    </nav>
+    
+
+    
+    <div class="footer-social">
+      
+      
+      
+      <a class="footer-social__link" href="/feed.xml" aria-label="RSS">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 110 4.36 2.18 2.18 0 010-4.36zM4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44zm0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
+        </svg>
+      </a>
+    </div>
+
+    
+    <div class="footer-copyright">
+      <p>&copy; 2026 LEON HARDT Blog. All rights reserved.</p>
+    </div>
+
+    
+    
+    <div class="footer-custom">
+      Powered by Gridea Pro
+    </div>
+    
+
+    
+    <div class="footer-powered">
+      <span>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener noreferrer">Gridea Pro</a></span>
+    </div>
+
+  </div>
+</footer>
+
+  
+  <div class="search-overlay" id="searchOverlay" style="display:none;">
+  <div class="search-modal">
+    <div class="search-header">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." autocomplete="off" />
+      <span class="search-kbd">&#8984;K</span>
+      <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script src="/scripts/search.js"></script>
+  
+
+  
+
+  
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  
+
+  
+
+</body>
 </html>

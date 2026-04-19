@@ -1,9 +1,60 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
-  <%- include('./_blocks/head', { siteTitle: themeConfig.siteName }) %>
-  <meta name="description" content="<%= themeConfig.siteDescription %>">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/True.css">
+
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ["\\(", "\\)"]],
+      displayMath: [['$$', '$$'], ["\\[", "\\]"]]
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a', 'annotation', 'annotation-xml'],
+      ignoreHtmlClass: 'tex2jax_ignore|crayon-.*', // 'crayon-' 开头的类，属于Wordpress代码高亮库，这部分不需要处理，否则会导致显示不正确,这部分是正则式，多条之间用'|'分割
+      processHtmlClass: 'tex2jax_process'
+    },
+    //禁用右键菜单	
+    renderActions: {
+      addMenu: [0, '', '']
+    }
+  };
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+<meta name="description" content="AI时代的思考者">
+<meta property="og:site_name" content="LEON HARDT Blog">
+<meta property="og:title" content="LEON HARDT Blog">
+<meta property="og:description" content="AI时代的思考者">
+
+<meta property="og:image" content="mp">
+
+<meta property="og:url" content="https://skwlh544818.github.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LEON HARDT Blog">
+<meta name="twitter:description" content="AI时代的思考者">
+
+<meta name="twitter:image" content="mp">
+
+
+  <title>归档 | LEON HARDT Blog</title>
+  
 <meta name="description" content="AI时代的思考者">
 <link rel="canonical" href="https://skwlh544818.github.io/archives/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"LEON HARDT Blog","url":"https://skwlh544818.github.io","description":"AI时代的思考者","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://skwlh544818.github.io/search?q={search_term_string}"}}</script>
@@ -16,28 +67,406 @@
 <meta name="twitter:title" content="LEON HARDT Blog">
 <meta name="twitter:description" content="AI时代的思考者">
 </head>
+<body class="flavor-theme">
 
-<body>
-  <div class="head-top-line"></div>
-  <div class="header-box">
-    <%- include('./_blocks/header', {active: true, menu: 'archives', link: '/archives'}) %>
-  </div>
-  <div class="main-continer">
-    <% let scheme = site.customConfig.scheme || 'pisces'; %>
-    <div
-      class="section-layout <%= (scheme === 'muse' || scheme === 'mist')?'bg-color':'' %> <%= scheme !==''?scheme:'pisces' %>">
-      <div class="section-layout-wrapper">
-        <%- include('./_blocks/home-sidebar') %>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section archives-section bg-color posts-expand">
-            <%- include('./_blocks/archive-timeline') %>
-          </section>
-        </div>
+  <header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="top-bar">
+
+      
+      <div class="top-bar__left">
+        
+        <a href="https://skwlh544818.github.io" class="site-avatar-link" aria-label="返回首页">
+          <img class="site-avatar" src="/images/theme/doubao_001.png" alt="LEON HARDT Blog" />
+        </a>
+        
+        <a href="https://skwlh544818.github.io" class="site-name-link">LEON HARDT Blog</a>
       </div>
-    </div>
-    <%- include('./_blocks/footer') %>
-  </div>
-</body>
-<%- include('./_blocks/after-body') %>
 
+      
+      <nav class="top-bar__nav" id="sectionBar">
+        
+        
+        <a class="nav-item" href="/">首页</a>
+        
+        <a class="nav-item" href="/post">博客</a>
+        
+        <a class="nav-item" href="/memos">闪念</a>
+        
+        <a class="nav-item" href="/archives">归档</a>
+        
+        <a class="nav-item" href="/tags">标签</a>
+        
+        <a class="nav-item" href="/links">友链</a>
+        
+        <a class="nav-item" href="/post/about">关于</a>
+        
+        
+      </nav>
+
+      
+      <div class="top-bar__right">
+        <button class="btn-icon btn-search search-btn" id="btnSearch" type="button" aria-label="搜索">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="btn-icon btn-nav-toggle mobile-only" id="btnNavToggle" type="button" aria-label="切换导航">
+          <div class="hamburger" id="hamburger">
+            <span class="hamburger__line hamburger__line--top"></span>
+            <span class="hamburger__line hamburger__line--bottom"></span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<div class="header-spacer"></div>
+
+<script>
+(function(){
+  var btn = document.getElementById('btnNavToggle');
+  var nav = document.getElementById('sectionBar');
+  var hamburger = document.getElementById('hamburger');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    nav.classList.toggle('top-bar__nav--open');
+    if (hamburger) hamburger.classList.toggle('is-active');
+  });
+  nav.querySelectorAll('.nav-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      nav.classList.remove('top-bar__nav--open');
+      if (hamburger) hamburger.classList.remove('is-active');
+    });
+  });
+})();
+</script>
+
+  <main class="site-main" role="main">
+    
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">归档</h1>
+    
+    <p class="page-subtitle meta-text">共 35 篇文章</p>
+    
+  </div>
+
+  
+  <div class="archive-list">
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-09-02T18:04:49+08:00</time>
+      <a href="/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-qi-zhang-xi-ti/" class="archive-item__title">《python编程导论》第七章习题</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-08-14T21:26:03+08:00</time>
+      <a href="/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-si-zhang-xi-ti/" class="archive-item__title">《python编程导论》第四章习题</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-08-13T14:38:18+08:00</time>
+      <a href="/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-san-zhang-lian-xi-da-an/" class="archive-item__title">《python编程导论》第三章练习</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-08-13T13:20:59+08:00</time>
+      <a href="/post/docker-zhong-ming-ling-xing-an-zhuang-matlab2021a-de-linux-ban-ben/" class="archive-item__title">docker中命令行安装Matlab2021a的Linux版本</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-08-11T15:40:05+08:00</time>
+      <a href="/post/lesslesspython-bian-cheng-dao-lun-greatergreater-di-er-zhang-xi-ti/" class="archive-item__title">《python编程导论》第二章习题</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-21T12:27:07+08:00</time>
+      <a href="/post/3-longest-substring-without-repeating-characters/" class="archive-item__title">3. Longest Substring Without Repeating Characters</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-20T18:25:48+08:00</time>
+      <a href="/post/2-add-two-numbers/" class="archive-item__title">2. Add Two Numbers</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-20T14:51:21+08:00</time>
+      <a href="/post/543-diameter-of-binary-tree/" class="archive-item__title">543. Diameter of Binary Tree</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-20T13:10:04+08:00</time>
+      <a href="/post/338-counting-bits/" class="archive-item__title">338. Counting Bits</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-19T20:06:12+08:00</time>
+      <a href="/post/283-move-zeroes/" class="archive-item__title">283. Move Zeroes</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-19T15:21:05+08:00</time>
+      <a href="/post/234-palindrome-linked-list/" class="archive-item__title">234. Palindrome Linked List</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-18T20:17:32+08:00</time>
+      <a href="/post/226-invert-binary-tree/" class="archive-item__title">226. Invert Binary Tree</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-18T12:29:59+08:00</time>
+      <a href="/post/206-reverse-linked-list/" class="archive-item__title">206. Reverse Linked List</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-17T16:05:45+08:00</time>
+      <a href="/post/169-majority-element/" class="archive-item__title">169. Majority Element</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-16T18:16:45+08:00</time>
+      <a href="/post/160-intersection-of-two-linked-lists/" class="archive-item__title">160. Intersection of Two Linked Lists</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-16T10:37:09+08:00</time>
+      <a href="/post/155-min-stack/" class="archive-item__title">155. Min Stack</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-15T11:44:27+08:00</time>
+      <a href="/post/141-linked-list-cycle/" class="archive-item__title">141. Linked List Cycle</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-15T10:38:31+08:00</time>
+      <a href="/post/136-single-number/" class="archive-item__title">136. Single Number</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-14T13:48:57+08:00</time>
+      <a href="/post/121-best-time-to-buy-and-sell-stock/" class="archive-item__title">121. Best Time to Buy and Sell Stock</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-14T13:05:31+08:00</time>
+      <a href="/post/104-maximum-depth-of-binary-tree/" class="archive-item__title">104. Maximum Depth of Binary Tree</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-13T20:08:28+08:00</time>
+      <a href="/post/101-symmetric-tree/" class="archive-item__title">101. Symmetric Tree</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-02T12:51:05+08:00</time>
+      <a href="/post/94-binary-tree-inorder-traversal/" class="archive-item__title">94. Binary Tree Inorder Traversal</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-02T11:02:16+08:00</time>
+      <a href="/post/70-climbing-stairs/" class="archive-item__title">70. Climbing Stairs</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-01T13:28:47+08:00</time>
+      <a href="/post/53-maximum-subarray/" class="archive-item__title">53. Maximum Subarray</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-05-01T10:22:24+08:00</time>
+      <a href="/post/search-insert-position/" class="archive-item__title">35. Search Insert Position</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-04-30T11:23:52+08:00</time>
+      <a href="/post/21-merge-two-sorted-lists/" class="archive-item__title"> 21. Merge Two Sorted Lists</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-04-30T10:12:44+08:00</time>
+      <a href="/post/20-valid-parentheses/" class="archive-item__title">20. Valid Parentheses</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-04-29T13:44:41+08:00</time>
+      <a href="/post/13-roman-to-integer/" class="archive-item__title">13. Roman to Integer</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-04-29T12:53:55+08:00</time>
+      <a href="/post/9-palindrome-number/" class="archive-item__title">9. Palindrome Number</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-04-28T20:51:00+08:00</time>
+      <a href="/post/1-two-sum/" class="archive-item__title">1. Two Sum</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-01-19T10:06:37+08:00</time>
+      <a href="/post/conda-huan-jing-qian-yi/" class="archive-item__title">conda环境迁移</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-01-13T11:52:57+08:00</time>
+      <a href="/post/deep-reinforcement-learning-for-imbalanced-classification/" class="archive-item__title">Deep reinforcement learning for imbalanced classification</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-01-13T11:48:10+08:00</time>
+      <a href="/post/image-classification-by-reinforcement-learning-with-two-state-q-learning/" class="archive-item__title">Image Classification by Reinforcement Learning with Two-State Q-Learning</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-01-12T22:41:14+08:00</time>
+      <a href="/post/classification-with-costly-features-using-deep-reinforcement-learning/" class="archive-item__title">Classification with Costly Features Using Deep Reinforcement Learning</a>
+      
+    </div>
+    
+    <div class="archive-item">
+      <time class="archive-item__date meta-text">2022-01-05T12:15:55+08:00</time>
+      <a href="/post/ji-qi-xue-xi-ji-chu/" class="archive-item__title">机器学习基础</a>
+      
+    </div>
+    
+  </div>
+  
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+
+    
+    
+    <nav class="footer-nav" aria-label="页脚导航">
+      
+      <a class="footer-nav__link" href="/">首页</a>
+      
+      <a class="footer-nav__link" href="/post">博客</a>
+      
+      <a class="footer-nav__link" href="/memos">闪念</a>
+      
+      <a class="footer-nav__link" href="/archives">归档</a>
+      
+      <a class="footer-nav__link" href="/tags">标签</a>
+      
+      <a class="footer-nav__link" href="/links">友链</a>
+      
+      <a class="footer-nav__link" href="/post/about">关于</a>
+      
+    </nav>
+    
+
+    
+    <div class="footer-social">
+      
+      
+      
+      <a class="footer-social__link" href="/feed.xml" aria-label="RSS">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 110 4.36 2.18 2.18 0 010-4.36zM4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44zm0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
+        </svg>
+      </a>
+    </div>
+
+    
+    <div class="footer-copyright">
+      <p>&copy; 2026 LEON HARDT Blog. All rights reserved.</p>
+    </div>
+
+    
+    
+    <div class="footer-custom">
+      Powered by Gridea Pro
+    </div>
+    
+
+    
+    <div class="footer-powered">
+      <span>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener noreferrer">Gridea Pro</a></span>
+    </div>
+
+  </div>
+</footer>
+
+  
+  <div class="search-overlay" id="searchOverlay" style="display:none;">
+  <div class="search-modal">
+    <div class="search-header">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." autocomplete="off" />
+      <span class="search-kbd">&#8984;K</span>
+      <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script src="/scripts/search.js"></script>
+  
+
+  
+
+  
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  
+
+  
+
+</body>
 </html>

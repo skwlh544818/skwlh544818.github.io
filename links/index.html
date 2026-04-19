@@ -6,8 +6,32 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="/styles/main.min.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/True.css">
+
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ["\\(", "\\)"]],
+      displayMath: [['$$', '$$'], ["\\[", "\\]"]]
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a', 'annotation', 'annotation-xml'],
+      ignoreHtmlClass: 'tex2jax_ignore|crayon-.*', // 'crayon-' 开头的类，属于Wordpress代码高亮库，这部分不需要处理，否则会导致显示不正确,这部分是正则式，多条之间用'|'分割
+      processHtmlClass: 'tex2jax_process'
+    },
+    //禁用右键菜单	
+    renderActions: {
+      addMenu: [0, '', '']
+    }
+  };
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
 
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -18,7 +42,7 @@
 <meta property="og:title" content="LEON HARDT Blog">
 <meta property="og:description" content="AI时代的思考者">
 
-<meta property="og:image" content="/images/avatar.png">
+<meta property="og:image" content="mp">
 
 <meta property="og:url" content="https://skwlh544818.github.io">
 <meta property="og:type" content="website">
@@ -26,7 +50,7 @@
 <meta name="twitter:title" content="LEON HARDT Blog">
 <meta name="twitter:description" content="AI时代的思考者">
 
-<meta name="twitter:image" content="/images/avatar.png">
+<meta name="twitter:image" content="mp">
 
 
   <title>友链 | LEON HARDT Blog</title>
@@ -249,24 +273,8 @@
   
 
   
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function () {
-      var content = document.querySelector('.article-content');
-      if (content && window.renderMathInElement) {
-        renderMathInElement(content, {
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '\\(', right: '\\)', display: false},
-            {left: '\\[', right: '\\]', display: true}
-          ],
-          throwOnError: false
-        });
-      }
-    });
-  </script>
-  
+
+  <script>hljs.initHighlightingOnLoad();</script>
 
   
 
