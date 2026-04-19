@@ -6,6 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="/styles/main.min.css">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -432,6 +435,26 @@ Given an array of integers nums and an integer target, return indices of the
 <script src="/scripts/search.js"></script>
   
 
+  
+
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      var content = document.querySelector('.article-content');
+      if (content && window.renderMathInElement) {
+        renderMathInElement(content, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
   
 
   

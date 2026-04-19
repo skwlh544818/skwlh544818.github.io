@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('./_blocks/head', { siteTitle: themeConfig.siteName }) %>
+<meta name="description" content="AI时代的思考者">
+<link rel="canonical" href="https://skwlh544818.github.io/tag/zi-fu-chuan/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"LEON HARDT Blog","url":"https://skwlh544818.github.io","description":"AI时代的思考者","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://skwlh544818.github.io/search?q={search_term_string}"}}</script>
+<meta property="og:title" content="LEON HARDT Blog">
+<meta property="og:description" content="AI时代的思考者">
+<meta property="og:url" content="https://skwlh544818.github.io/tag/zi-fu-chuan/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LEON HARDT Blog">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LEON HARDT Blog">
+<meta name="twitter:description" content="AI时代的思考者">
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    <%- include('./_blocks/header', {active: false}) %>
+  </div>
+  <div class="main-continer">
+    <% let scheme = site.customConfig.scheme || 'pisces'; %>
+    <div
+      class="section-layout <%= (scheme === 'muse' || scheme === 'mist')?'bg-color':'' %> <%= scheme !==''?scheme:'pisces' %>">
+      <div class="section-layout-wrapper">
+        <%- include('./_blocks/home-sidebar') %>
+        <div class="section-box tag-line box-shadow-wrapper">
+          <section class="section tags-section posts-expand bg-color">
+            <%- include('./_blocks/tag-timeline') %>
+          </section>
+        </div>
+      </div>
+    </div>
+    <%- include('./_blocks/footer') %>
+  </div>
+</body>
+<%- include('./_blocks/after-body') %>
+
+</html>
