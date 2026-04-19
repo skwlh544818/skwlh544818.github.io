@@ -1,60 +1,737 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="/styles/main.min.css">
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://skwlh544818.github.io/media/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+<link rel="stylesheet" href="https://skwlh544818.github.io/styles/main.css">
+<link rel="stylesheet" href="https://skwlh544818.github.io/media/css/font-awesome.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<title>LEON HARDT Blog</title>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/True.css">
+<body>
 
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                <!--------------- pc端菜单栏👇 ---------------->
+                <div class="side"><head>
+    <link rel="stylesheet" href="https://skwlh544818.github.io/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://skwlh544818.github.io/styles/main.css">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+    <!--------- 数学公式👇---- -->
+    
+    <!--------- 数学公式👆----------------- -->
+    <!--------- daovocie功能👇 ------------------->
+    
+    <!--------- daovocie功能👆 ------------------->
+    <!-- -----------------twikoo评论系统引入👇 --------->
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js"></script>
+    <!-- -----------------twikoo评论系统引入👆 --------->
+    <!---------------- leancloud api 功能依赖引入👇 -------->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script>
+    <!---------------- leancloud api 功能依赖引入👆 -------->
+    <!------------------ valine评论系统引入👇 ------------------>
+    <script src="https://skwlh544818.github.io/media/js/valine.min.js"></script>
+    <!------------------ valine评论系统引入👆 ------------------>
+    <!---------------- 今日诗词api功能依赖👇 ----------------------->
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <!---------------- 今日诗词api功能依赖👆 ----------------------->
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+        height: 100vh;
+        overflow-y: scroll;
+        cursor: url("https://skwlh544818.github.io/media/images/mouse_cursor.png"), auto
+    }
+</style>
+
+<body>
+    <!--=------ 页面加载动态画面👇 --------------->
+    <div class="pjaxloading" onclick="pjaxloadingClose()">
+        <div class="loadingbackground"></div>
+        <div id="loading">
+            <div class="loading">
+            </div>
+        </div>
+    </div>
+    <!--=------ 页面加载动态画面👆 --------------->
+
+    <!--------------- 左侧菜单栏👇 ------------------------>
+    
+    <div id=side>
+        <div class="r_m_div">
+            <a onclick="showAaplayer()"><i style="font-size: 20px;"><img
+                        src='https://skwlh544818.github.io/media/images/music.png' alt="音乐播放器" class="musicbtn"></i></a>
+        </div>
+        <div class="avatar-border">
+            <img src="https://skwlh544818.github.io/images/avatar.png?v=1776607323" class="avatar">
+        </div>
+        <div class="sitename">LEON HARDT Blog</div>
+        <span class="description" data-text='["AI时代的思考者"]'>&nbsp;</span>
+        <div class="siteinfocontainer">
+            <span class="siteinfo">文章</span>
+            <span class="siteinfo">标签</span>
+        </div>
+        <div class="siteinfocontainer">
+            <span class="siteinfo">3</span>
+            <span class="siteinfo">22</span>
+        </div>
+        
+        <div class="search">
+            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+            <input type="text" class="search-input" placeholder="标题搜索 ⚆_⚆ つ♡">
+            <div class="search-results"></div>
+        </div>
+        
+    <div class="share-button">
+        <span></span>
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+    <div id="qq" style="display:none"></div>
+    <!------------ 加载菜单按钮👇 ------------------------->
+    <div class="menucontainer">
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="首页"></i>&nbsp;<span
+                    data-text="首页">首页</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/post" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="博客"></i>&nbsp;<span
+                    data-text="博客">博客</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/memos" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="闪念"></i>&nbsp;<span
+                    data-text="闪念">闪念</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/archives" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="归档"></i>&nbsp;<span
+                    data-text="归档">归档</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/tags" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="标签"></i>&nbsp;<span
+                    data-text="标签">标签</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/links" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="友链"></i>&nbsp;<span
+                    data-text="友链">友链</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/post/about" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="关于"></i>&nbsp;<span
+                    data-text="关于">关于</span>
+            </a>
+        </div>
+        
+        
+
+        
+            
+        <div class="mchocie description">
+            <a data-pjax href="https://skwlh544818.github.io/friends" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="友人帐"></i>&nbsp;<span data-text="友人帐">友人帐</span>
+            </a>
+        </div>
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="#terrestrial" id="fog_go" class="open-popup menubutton" style="margin-right: 15px;">
+                    <i><img class="icon menuicon" src="" alt="御风飞行"></i>&nbsp;<span data-text="御风飞行">御风飞行</span>
+            </a>
+        </div>
+        
+    </div>
+    <!------------ 加载菜单按钮👆 ------------------------->
+    <hr>
+    <style>
+    .copyright {
+        font-size: 15px;
+        color: #d9d9d9;
+    }
+
+
+    @media screen and (min-width: 1200px) {
+        .foot {
+            width: 100%;
+            height: 130px;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .foot {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <div class="foot">
+        <div id="footinfo">Powered by Gridea Pro | Theme: <a
+                href="https://github.com/850552586/gridea-theme-fog">Fog</a>
+            <div>
+                
+            </div>
+            <div>
+                
+            </div>
+            <div class="copyright" style="color:white;text-align: center;">Copyright © 2020  备案号: 鄂ICP备...号
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+    </div>
+
+
+    <script src="https://skwlh544818.github.io/media/js/wordshow.js"></script>
+    
+    <!--------------- 左侧菜单栏👆 ------------------------>
+
+    <!----------------- 顶部菜单栏👇 ------------------------>
+    
+    <!----------------- 顶部菜单栏👆 ------------------------>
+
+<!--核心功能加载-->
+<script src="https://skwlh544818.github.io/media/js/mainfunc.js"></script>
+
+<!------------- Fog1.0版本彩蛋👇 -------------->
+    <section id="terrestrial" class="popup">
+        <a href="#" class="back">&lt; back</a>
+    </section>
+
+    <div class="flycontainer">
+        <div class="flyword">御风飞行中...</div>
+    </div>
+
+    <script>
+        $("#fog_go").click(function(){fog_go()});
+        async function fog_go(){
+            $(".bars").hide()
+            $("#live2d").hide()
+            await sleep(3000);
+            $(".flycontainer").css("display","flex");
+            $(".popup").fadeOut(500)
+            await sleep(2000);
+            getFogUser()
+        }
+
+        function fog_goregis(){
+            var sitename = "LEON HARDT Blog";
+            var siteurl = "https://skwlh544818.github.io";
+            regisFogUser(sitename,siteurl);
+        }
+        fog_goregis();
+    </script>
+<!------------- Fog1.0版本彩蛋👆 -------------->
+
+
+<!------ 根据自定义配置声明变量👇 --------------------->
+
+    <script>
+        let menupos = 'left'
+    </script>
+    
+    
+    <script>
+        let shareChoice = true
+    </script>
+    
+    
+    <script>
+        let donateChoice = true
+    </script>
+    
+    
+    <script>
+        let searchChoice = true
+    </script>
+    
+    <script>let postsnum = 0;</script>
+    <div id="side-posttitle" style="display: none;">
+        
+    
+    Deep reinforcement learning for imbalanced classification
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Image Classification by Reinforcement Learning with Two-State Q-Learning
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Classification with Costly Features Using Deep Reinforcement Learning
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    </div>
+    <!------ 根据自定义配置声明变量👆 --------------------->
+
+
+    <!----------根据自定义配置设置图标信息👇---------->
+    <script>
+        var icondict = new Array();
+    </script>
+    
+    <script>
+        var iconname = "首页";
+        var iconurl = "";
+        icondict[iconname] = iconurl;
+    </script>
+    
+    <!----------根据自定义配置设置图标信息👆---------->
+</body>
+
+<script src="https://skwlh544818.github.io/media/share/dist/Share.js"></script>
+<!-- 页面pjax测试 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
+<!--确保jQuery已经在此之前加载-->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<script src="https://skwlh544818.github.io/media/js/all-pjax.js"></script>
+<script>
+    //-------------------------------说说功能👇--------------------------------------
+    let talksall = [];
+    let talks = [];
+    let talkindex = 0;
+    get();
+
+    function get() {
+        var t = JSON.parse('[]');
+        talkindex = t.length - 1;
+        for (var i = 0; i <= t.length - 1; i++) {
+            var d = {};
+            d["time"] = t[i].time;
+            d["author"] = t[i].author;
+            d["text"] = t[i].text;
+            d["img"] = t[i].img;
+            talksall.push(d);
+        }
+    }
+
+    function add() {
+        for (var i = talkindex; i >= 0 && i > talkindex - 3; i--) {
+            talks.push(talksall[i]);
+        }
+        talkindex = (talkindex - 3) >= 0 ? (talkindex - 3) : -1;
+        if (talkindex < 0) $("#getmorebt").hide();
+        show();
+    }
+
+    function show() {
+        var talkT = document.getElementById("talkContainer");
+        talkT.innerHTML = "";
+        for (var i = 0; i < talks.length; i++) {
+            if (talks[i].img != '') {
+                talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <span data-fancybox="images" href="' + talks[i].img + '"><img src="' + talks[i].img + '" class="talkimg"></span> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
+            } else {
+                talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
+            }
+        }
+    }
+    //-------------------------------说说功能👆--------------------------------------
+</script>
+
+<!---->
+<script>
+    function replaceAvatar() {
+        twikoo_avatar = $(".tk-avatar-img");
+        for (var i = 0; i < twikoo_avatar.length; i++) {
+            var asrc = twikoo_avatar.eq(i).attr('src');
+            if (asrc.search('cn.gravatar.com') != -1) {
+                twikoo_avatar.eq(i).attr('src', 'https://skwlh544818.github.io/media/images/comavatar.png');
+            }
+        }
+    }
+
+    function showWechat() {
+        var wechat = '';
+        alert("博主微信号：" + wechat);
+        return false;
+    }
+</script>
 
 <script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ["\\(", "\\)"]],
-      displayMath: [['$$', '$$'], ["\\[", "\\]"]]
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a', 'annotation', 'annotation-xml'],
-      ignoreHtmlClass: 'tex2jax_ignore|crayon-.*', // 'crayon-' 开头的类，属于Wordpress代码高亮库，这部分不需要处理，否则会导致显示不正确,这部分是正则式，多条之间用'|'分割
-      processHtmlClass: 'tex2jax_process'
-    },
-    //禁用右键菜单	
-    renderActions: {
-      addMenu: [0, '', '']
+    /**
+     * https://github.com/tangkaichuan/gridea-search
+     */
+    // 检查缓存是否最新
+    function checkCache() {
+        var caches_postsnum = localStorage.getItem("postsnum");
+        var pt = document.getElementById("side-posttitle").innerHTML;
+        pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "")
+        var ptlen = pt.length;
+        var ptlen_storage = localStorage.getItem("poststitlelen");
+        if (caches_postsnum != postsnum || ptlen != ptlen_storage) {
+            console.log("更新缓存");
+            return false
+        }
+        return true;
     }
-  };
+
+    (function () {
+        var CACHES = checkCache()
+        if (!CACHES) {
+            var NOW = Date.now()
+            var API_CONTENT = '../api-content/index.html' + '?_=' + NOW
+            preload(API_CONTENT);
+            getContents(show_getContentresult);
+        }
+
+        function show_getContentresult(data) {
+            console.log("获取成功");
+            var postslen = data["posts"].length;
+            localStorage.setItem('postsnum', postslen);
+            var poststitlelen = 0;
+            var pt = document.getElementById("side-posttitle").innerHTML;
+            pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "");
+            localStorage.setItem('poststitlelen', pt.length);
+        }
+
+
+
+        // preload
+        function preload(url) {
+            var preloadLink = document.createElement('link')
+            preloadLink.href = url
+            preloadLink.rel = 'preload'
+            preloadLink.as = 'fetch'
+            preloadLink.crossOrigin = 'anonymous'
+            document.head.appendChild(preloadLink)
+        }
+
+        // 异步 GET 请求
+        function get(obj) {
+            var xhr = new XMLHttpRequest()
+            xhr.open('get', obj.url, true)
+            xhr.send(null)
+            xhr.onreadystatechange = function () {
+                // 异步请求：响应状态为4，数据加载完毕
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        obj.success(xhr.responseText)
+                    } else {
+                        obj.error(xhr.status)
+                    }
+                }
+            }
+        }
+
+        // 获取博客全文 api
+        function getContents(callback) {
+            if (CACHES) {
+                callback(CACHES.contents)
+            } else {
+                get({
+                    url: API_CONTENT,
+                    success: function (data) {
+                        callback(JSON.parse(data));
+                        localStorage.setItem('ContentsCache', data);
+                        getStorageContent();
+                    }
+                })
+            }
+        }
+    })()
+    //------------------------核心功能--pjax全局渲染👇-------------------
+    let talkinit = false;
+    $(document).pjax('a[data-pjax]', '#main', {
+        fragment: '#main',
+        timeout: 8000
+    }).on('pjax:complete', function () {
+        //代码块高亮渲染
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+        //文章热度
+        getHotnum();
+        //文章索引
+        toginit();
+        //清空搜索栏
+        if (searchChoice) {
+            searchInit();
+            searchInput.value = "";
+        }
+        var pl = window.location.pathname;
+        //说说更新
+        if (pl.search("talk") != -1 && !talkinit) {
+            add();
+            talkinit = true;
+        } else if (pl.search("talk") != -1) {
+            show();
+        }
+        if (pl.search("post") != -1) {
+            if (shareChoice)
+                shareInit();
+            if (donateChoice)
+                donateInit();
+            imglazyloadinit();
+            lazyload();
+            codeinit();
+            if ("valine" == "twikoo") {
+                //twikoo头像更换
+                setTimeout(replaceAvatar, 3000);
+                setTimeout(replaceAvatar, 8000); //部分博主站点速度加载过慢，再添加一个延迟
+            }
+        }
+        if (btstate == true)
+            dropdown();
+    }).on('pjax:start', function () {
+        $(".pjaxloading").fadeIn(50);
+    }).on('pjax:end', function () {
+        $(".pjaxloading").fadeOut(50);
+    });
+    //------------------------核心功能--pjax全局渲染👆-------------------
+
+    //-------------------------------------------------搜索
+    // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+    if (searchChoice) {
+        var searchInput = document.querySelector('.search-input');
+        var searchResults = document.querySelector('.search-results');
+    }
+    // 申明保存文章的标题、链接、内容的数组变量
+    var searchValue = '',
+        arrItems = [],
+        arrLinks = [],
+        arrTitles = [],
+        arrContents = [],
+        arrResults = [],
+        indexItem = [],
+        itemLength = 0;
+    var tmpDiv = document.createElement('div');
+    tmpDiv.className = 'result-item';
+
+
+    function getStorageContent() {
+        var data = localStorage.getItem('ContentsCache');
+        data = JSON.parse(data);
+        posts = data["posts"];
+        for (var i = 0; i < posts.length; i++) {
+            arrLinks[i] = posts[i].link;
+            arrTitles[i] = posts[i].title;
+            arrContents[i] = posts[i].content;
+            itemLength++;
+        }
+    }
+    if (checkCache())
+        getStorageContent();
+    // 输入框内容变化后就开始匹配，可以不用点按钮
+    // 经测试，onkeydown, onchange 等方法效果不太理想，
+    // 存在输入延迟等问题，最后发现触发 input 事件最理想，
+    // 并且可以处理中文输入法拼写的变化
+    searchInput.oninput = function () {
+        setTimeout(searchConfirm, 0);
+    }
+    searchInput.onfocus = function () {
+        searchResults.style.display = 'block';
+    }
+
+    function searchConfirm() {
+        if (searchInput.value == '') {
+            searchResults.style.display = 'none';
+        } else if (searchInput.value.search(/^\s+$/) >= 0) {
+            // 检测输入值全是空白的情况
+            searchInit();
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '请输入有效内容...';
+            searchResults.appendChild(itemDiv);
+        } else {
+            // 合法输入值的情况
+            searchInit();
+            searchValue = searchInput.value;
+            // 在标题、内容中查找
+            searchMatching(arrTitles, arrContents, searchValue);
+        }
+    }
+
+    // 每次搜索完成后的初始化
+    function searchInit() {
+        arrResults = [];
+        indexItem = [];
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'block';
+    }
+
+    function searchMatching(arr1, arr2, input) {
+        // 忽略输入大小写
+        input = new RegExp(input, 'i');
+        var step = 10;
+        // 在所有文章标题、内容中匹配查询值
+        for (i = 0; i < itemLength; i++) {
+            var indexContent = arr2[i].search(input);
+            //标题匹配
+            if (arr1[i].search(input) != -1) {
+                indexItem.push(i); // 保存匹配值的索引
+                if (indexContent != -1) {
+                    startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                    var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                    arrResults.push("....." + searchcontent + ".....");
+                } else
+                    arrResults.push("");
+            }
+            //内容匹配
+            else if (indexContent != -1) {
+                indexItem.push(i); // 保存匹配值的索引
+
+                startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                arrResults.push("....." + searchcontent + ".....");
+            }
+        }
+
+        // 输出总共匹配到的数目
+        var totalDiv = tmpDiv.cloneNode(true);
+        totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
+        searchResults.appendChild(totalDiv);
+
+        // 未匹配到内容的情况
+        if (indexItem.length == 0) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '未匹配到内容...';
+            searchResults.appendChild(itemDiv);
+        }
+
+        // 将所有匹配内容进行组合
+        for (i = 0; i < arrResults.length; i++) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerHTML = '<a data-pjax class="searchresults" href="' + arrLinks[indexItem[i]] + '"><b>[' +
+                arrTitles[indexItem[i]] +
+                ']</b><p>' + arrResults[i] + '</p></a><hr />';
+            searchResults.appendChild(itemDiv);
+        }
+    }
 </script>
-<script type="text/javascript"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
 
+<!--------------------- 菜单栏图标加载功能👇 ----------------------->
+<script>
+var menulist = $(".menuicon");
+var menulength = menulist.length;
+for (var i = 0; i < menulength; i++) {
+    var altname = menulist.eq(i).attr("alt");
+    var iconurl = icondict[altname];
+    if (iconurl == undefined || iconurl == '')
+        continue;
+    if (iconurl == 'Home') {
+        menulist.eq(i).attr("src", "https://skwlh544818.github.io/media/images/Home.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Archive') {
+menulist.eq(i).attr("src", "https://skwlh544818.github.io/media/images/Archive.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Tag') {
+menulist.eq(i).attr("src", "https://skwlh544818.github.io/media/images/Tag.png");
+menulist.eq(i).show();
+} else if (iconurl == 'About') {
+menulist.eq(i).attr("src", "https://skwlh544818.github.io/media/images/About.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Talk') {
+menulist.eq(i).attr("src", "https://skwlh544818.github.io/media/images/Talk.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Friends') {
+menulist.eq(i).attr("src", "https://skwlh544818.github.io/media/images/Friends.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Fly') {
+menulist.eq(i).attr("src", "https://skwlh544818.github.io/media/images/wind.png");
+menulist.eq(i).show();
+} else {
+menulist.eq(i).attr("src", iconurl);
+menulist.eq(i).show();
+}
+}
+</script>
+<!--------------------- 菜单栏图标加载功能👆 -----------------------></div>
+                <!--------------- pc端菜单栏👆 ---------------->
 
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-
-<meta name="description" content="AI时代的思考者">
-<meta property="og:site_name" content="LEON HARDT Blog">
-<meta property="og:title" content="LEON HARDT Blog">
-<meta property="og:description" content="AI时代的思考者">
-
-<meta property="og:image" content="mp">
-
-<meta property="og:url" content="https://skwlh544818.github.io">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LEON HARDT Blog">
-<meta name="twitter:description" content="AI时代的思考者">
-
-<meta name="twitter:image" content="mp">
-
-
-  <title>#分类 | LEON HARDT Blog</title>
-  
+                <!----------- 移动端导航栏👇 ----------------->
+                <div class="tbar"> <head>
+  <!-- 引入Bootstrap核心样式文件 -->
+  <link rel="stylesheet" href="https://skwlh544818.github.io/media/css/bootstrap.min.css">
 <meta name="description" content="AI时代的思考者">
 <link rel="canonical" href="https://skwlh544818.github.io/tag/分类/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"LEON HARDT Blog","url":"https://skwlh544818.github.io","description":"AI时代的思考者","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://skwlh544818.github.io/search?q={search_term_string}"}}</script>
@@ -67,263 +744,399 @@
 <meta name="twitter:title" content="LEON HARDT Blog">
 <meta name="twitter:description" content="AI时代的思考者">
 </head>
-<body class="flavor-theme">
+<style>
+  .navmobile {
+    z-index: 15;
+    max-height: 40vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 
-  <header class="site-header" id="siteHeader">
-  <div class="header-inner">
-    <div class="top-bar">
+  @media screen and (max-width: 1200px) {
+    .navbar {
+      max-width: 100vw;
+    }
+  }
 
-      
-      <div class="top-bar__left">
+  @media screen and (max-width:1200px) and (min-width: 768px) {
+    @media (min-width: 768px) {
+      .navbar-nav {
+        float: right;
+        margin: 0;
+      }
+    }
+  }
+
+  @media screen and (max-width:768px) {
+    .mbapspan {
+      padding: 0;
+    }
+  }
+</style>
+<div class="pjaxloading"  onclick="pjaxloadingClose()">
+  <div class="loadingbackground"></div>
+  <div id="loading">
+    <div class="loading">
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top navmobile">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
+        aria-expanded="false" id="barbutton">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a data-pjax class="navbar-brand" href="https://skwlh544818.github.io">LEON HARDT Blog&nbsp;&nbsp;|</a>
+      <span class="navbar-brand mbapspan"><i id="mbaplayer" class="fa fa-play-circle-o" aria-hidden="true"
+          style="font-size: 28px;top: 12px;position: absolute;" onclick="aplayerPlay();"></i></span>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="barmenu">
+      <ul class="nav navbar-nav">
         
-        <a href="https://skwlh544818.github.io" class="site-avatar-link" aria-label="返回首页">
-          <img class="site-avatar" src="/images/theme/doubao_001.png" alt="LEON HARDT Blog" />
+        
+        <li>
+          <a data-pjax href="/">
+            首页
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/post">
+            博客
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/memos">
+            闪念
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/archives">
+            归档
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/tags">
+            标签
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/links">
+            友链
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/post/about">
+            关于
+          </a>
+        </li>
+        
+        
+        
+          
+        <li><a data-pjax href="https://skwlh544818.github.io/friends">友链</a></li>
+
+        
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <!-- 引入jQuery核心js文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+  <script>
+    let btstate = false;
+    var bt = $("#barbutton");
+    var bm = $("#barmenu");
+    bt.click(function () {
+      dropdown();
+    })
+    function dropdown() {
+      console.log(btstate);
+      //下拉
+      if (btstate == false) {
+        bt.removeClass("collapsed");
+        bt.attr("aria-expanded", "true");
+        bm.attr("aria-expanded", "true")
+        bm.fadeIn(700);
+        btstate = true;
+      }
+      else {
+        bt.addClass("collapsed");
+        bt.attr("aria-expanded", "false");
+        bm.removeClass("in");
+        bm.hide();
+        bm.attr("aria-expanded", "false");
+        btstate = false;
+      }
+    }
+  </script> </div>
+                <!----------- 移动端导航栏👆 ----------------->
+
+                <!-- ----------------左侧菜单栏html 👇-------------------------------------->
+                
+                <div>
+                    <div id="tab1" class="tab">
+                        <div class="bars">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="close"></div>
+                    </div>
+                    <div class="col-lg-3"></div>
+                        <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                            <link rel="stylesheet" href="https://skwlh544818.github.io/media/css/font-awesome.css">
+<div class="tag-container">
+    
+    <div class="postshow">
+        
+        <a data-pjax href="/post/deep-reinforcement-learning-for-imbalanced-classification/">
+            <div id="post" style="width:100%">
+                
+                <img src="/media/images/postdefault.png" class="postimage">
+                
+        <div class="posttitlebox">
+            <div class="posttitle">
+                Deep reinforcement learning for imbalanced classification
+            </div>
+    </div>
+</div>
+</a>
+<div class="postinfo">
+    <div class="postdate"><i class="fa fa-calendar"></i>2022-01-13</div>
+    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 1 分钟阅读</div>
+    <div class="posttag">
+        
+        <a data-pjax href="/tag/强化学习/" class="postlink">
+            <i class="fa fa-tag"></i> 强化学习
         </a>
         
-        <a href="https://skwlh544818.github.io" class="site-name-link">LEON HARDT Blog</a>
-      </div>
-
-      
-      <nav class="top-bar__nav" id="sectionBar">
+        <a data-pjax href="/tag/分类/" class="postlink">
+            <i class="fa fa-tag"></i> 分类
+        </a>
         
+        <a data-pjax href="/tag/论文/" class="postlink">
+            <i class="fa fa-tag"></i> 论文
+        </a>
         
-        <a class="nav-item" href="/">首页</a>
-        
-        <a class="nav-item" href="/post">博客</a>
-        
-        <a class="nav-item" href="/memos">闪念</a>
-        
-        <a class="nav-item" href="/archives">归档</a>
-        
-        <a class="nav-item" href="/tags">标签</a>
-        
-        <a class="nav-item" href="/links">友链</a>
-        
-        <a class="nav-item" href="/post/about">关于</a>
-        
-        
-      </nav>
-
-      
-      <div class="top-bar__right">
-        <button class="btn-icon btn-search search-btn" id="btnSearch" type="button" aria-label="搜索">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-        <button class="btn-icon btn-nav-toggle mobile-only" id="btnNavToggle" type="button" aria-label="切换导航">
-          <div class="hamburger" id="hamburger">
-            <span class="hamburger__line hamburger__line--top"></span>
-            <span class="hamburger__line hamburger__line--bottom"></span>
-          </div>
-        </button>
-      </div>
-
     </div>
-  </div>
-</header>
+</div>
 
+</div>
 
-<div class="header-spacer"></div>
+    <div class="postshow">
+        
+        <a data-pjax href="/post/image-classification-by-reinforcement-learning-with-two-state-q-learning/">
+            <div id="post" style="width:100%">
+                
+                <img src="/media/images/postdefault.png" class="postimage">
+                
+        <div class="posttitlebox">
+            <div class="posttitle">
+                Image Classification by Reinforcement Learning with Two-State Q-Learning
+            </div>
+    </div>
+</div>
+</a>
+<div class="postinfo">
+    <div class="postdate"><i class="fa fa-calendar"></i>2022-01-13</div>
+    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 1 分钟阅读</div>
+    <div class="posttag">
+        
+        <a data-pjax href="/tag/强化学习/" class="postlink">
+            <i class="fa fa-tag"></i> 强化学习
+        </a>
+        
+        <a data-pjax href="/tag/分类/" class="postlink">
+            <i class="fa fa-tag"></i> 分类
+        </a>
+        
+        <a data-pjax href="/tag/论文/" class="postlink">
+            <i class="fa fa-tag"></i> 论文
+        </a>
+        
+    </div>
+</div>
+
+</div>
+
+    <div class="postshow">
+        
+        <a data-pjax href="/post/classification-with-costly-features-using-deep-reinforcement-learning/">
+            <div id="post" style="width:100%">
+                
+                <img src="/media/images/postdefault.png" class="postimage">
+                
+        <div class="posttitlebox">
+            <div class="posttitle">
+                Classification with Costly Features Using Deep Reinforcement Learning
+            </div>
+    </div>
+</div>
+</a>
+<div class="postinfo">
+    <div class="postdate"><i class="fa fa-calendar"></i>2022-01-12</div>
+    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 1 分钟阅读</div>
+    <div class="posttag">
+        
+        <a data-pjax href="/tag/强化学习/" class="postlink">
+            <i class="fa fa-tag"></i> 强化学习
+        </a>
+        
+        <a data-pjax href="/tag/分类/" class="postlink">
+            <i class="fa fa-tag"></i> 分类
+        </a>
+        
+        <a data-pjax href="/tag/论文/" class="postlink">
+            <i class="fa fa-tag"></i> 论文
+        </a>
+        
+    </div>
+</div>
+
+</div>
+
+</div>
+                            <div>
+                                <div class="pcpagi">
+    <div class="pagi">
+        <ul>
+            
+            <li><a style="width:100px">&nbsp;</a></li>
+            
+                    <li><a id="page1">1</a></li>
+                    <li><a id="page2" class="active">2</a></li>
+                    <li><a id="page3">3</a></li>
+                    
+            <li><a style="width:100px">&nbsp;</a></li>
+            
+                </ul>
+    </div>
+</div>
+
+<div id="pagination-prev" style="display:none"> 
+</div>
+<div id="pagination-next" style="display:none"> </div>
+
+<div class="pagination-container">
+      
+    
+</div>
 
 <script>
-(function(){
-  var btn = document.getElementById('btnNavToggle');
-  var nav = document.getElementById('sectionBar');
-  var hamburger = document.getElementById('hamburger');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', function(){
-    nav.classList.toggle('top-bar__nav--open');
-    if (hamburger) hamburger.classList.toggle('is-active');
-  });
-  nav.querySelectorAll('.nav-item').forEach(function(item){
-    item.addEventListener('click', function(){
-      nav.classList.remove('top-bar__nav--open');
-      if (hamburger) hamburger.classList.remove('is-active');
-    });
-  });
-})();
+    var prevstr = document.getElementById("pagination-prev").innerHTML;
+    var nextstr = document.getElementById("pagination-next").innerHTML;
+    var page1 = document.getElementById("page1");
+    var page2 = document.getElementById("page2");
+    var page3 = document.getElementById("page3");
+    page1.innerHTML = '-';
+    page2.innerHTML = '1';
+    page3.innerHTML = '-';
+    if (prevstr.length > 5) {
+        if (prevstr.indexOf("page/") != -1) {
+            var prevnum = parseInt(prevstr.split("page/")[1]);
+            page1.innerHTML = prevnum;
+            page2.innerHTML = prevnum + 1;
+        } else {
+            page1.innerHTML = 1;
+            page2.innerHTML = 2;
+        }
+    }
+    if (nextstr.indexOf("page/") != -1) {
+        var nextnum = parseInt(nextstr.split("page/")[1]);
+        page3.innerHTML = nextnum;
+        page2.innerHTML = nextnum - 1;
+    }
 </script>
-
-  <main class="site-main" role="main">
-    
-<div class="container">
-  <div class="page-header">
-    <a href="/tags" class="page-back meta-text">&larr; 所有标签</a>
-    <h1 class="page-title"><span class="page-title__hash">#</span>分类</h1>
-    
-    <p class="page-subtitle meta-text">共 3 篇文章</p>
-    
-  </div>
-
-  
-  <div class="post-list">
-    
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/deep-reinforcement-learning-for-imbalanced-classification/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Deep reinforcement learning for imbalanced classification</h3>
-    </a>
-    <a href="/post/deep-reinforcement-learning-for-imbalanced-classification/" class="post-card__excerpt clamp-2">
-      處理的問題
-本文主要處理的問題是數據樣本各類別分佈不平衡的問題，分佈高度不平衡時對分類的效果有很大的影響。
-解決方案
-本文的一個處理方案就是使用强化學習來學習樣本分佈特徵，對分佈較少的類別基於的獎勵也越大，分佈多的樣本獎勵比較小。其網...
-    </a>
-    <div class="post-card__meta meta-text">
-      2022-01-13
-      
-    </div>
-  </div>
-  
-</article>
-
-    
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/image-classification-by-reinforcement-learning-with-two-state-q-learning/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Image Classification by Reinforcement Learning with Two-State Q-Learning</h3>
-    </a>
-    <a href="/post/image-classification-by-reinforcement-learning-with-two-state-q-learning/" class="post-card__excerpt clamp-2">
-      解决的问题
-本文主要解决其他强化学习解决分类问题面临维度高等问题，并且提升了精度。
-提出的方法
-本文提出了一种简单高效的基于深度学习和强化学习的混合分类器，仅使用两个状态和两/三个动作。
-创新点：
-
-首次提出基于强化学习的图像识别技术...
-    </a>
-    <div class="post-card__meta meta-text">
-      2022-01-13
-      
-    </div>
-  </div>
-  
-</article>
-
-    
-    <article class="post-card post-card--list">
-  <div class="post-card__body">
-    <a href="/post/classification-with-costly-features-using-deep-reinforcement-learning/" class="post-card__title-link">
-      <h3 class="post-card__title clamp-3">Classification with Costly Features Using Deep Reinforcement Learning</h3>
-    </a>
-    <a href="/post/classification-with-costly-features-using-deep-reinforcement-learning/" class="post-card__excerpt clamp-2">
-      处理的问题
-本文的应用场景是代价特征分类问题，即算法即需要最小化预期分类的错误，也需要最小化预期产生的成本。需要在二者之间取得一个平衡。
-代码
-解决的方法
-本文提出的一个方法是将强化学习用来顺序选择特征。主要还是 DQN
-环境设计
-...
-    </a>
-    <div class="post-card__meta meta-text">
-      2022-01-12
-      
-    </div>
-  </div>
-  
-</article>
-
-    
-  </div>
-  
+                                <div style="padding-bottom:10%"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2"></div>
+                </div>
+                <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+                
+                <!------------------ 顶部菜单栏html👇--------->
+                
+                <!------------------ 顶部菜单栏html👆--------->
+            </div>
+            
+        </div>
+        <div id="bg">
+        </div>
+        <!------- 背景图加载方式👇----- -->
+        <div id="bgchoice" style="display: none">default
+                    </div>
+                    
+                    <div id="bgurl" style="display:none">/media/images/bgimg.png</div>
+                       
+        </div>
+        <!------- 背景图加载方式👆 --------------->
+</div>
 </div>
 
-  </main>
-
-  <footer class="site-footer">
-  <div class="footer-inner">
-
-    
-    
-    <nav class="footer-nav" aria-label="页脚导航">
-      
-      <a class="footer-nav__link" href="/">首页</a>
-      
-      <a class="footer-nav__link" href="/post">博客</a>
-      
-      <a class="footer-nav__link" href="/memos">闪念</a>
-      
-      <a class="footer-nav__link" href="/archives">归档</a>
-      
-      <a class="footer-nav__link" href="/tags">标签</a>
-      
-      <a class="footer-nav__link" href="/links">友链</a>
-      
-      <a class="footer-nav__link" href="/post/about">关于</a>
-      
-    </nav>
-    
-
-    
-    <div class="footer-social">
-      
-      
-      
-      <a class="footer-social__link" href="/feed.xml" aria-label="RSS">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6.18 15.64a2.18 2.18 0 110 4.36 2.18 2.18 0 010-4.36zM4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44zm0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
-        </svg>
-      </a>
-    </div>
-
-    
-    <div class="footer-copyright">
-      <p>&copy; 2026 LEON HARDT Blog. All rights reserved.</p>
-    </div>
-
-    
-    
-    <div class="footer-custom">
-      Powered by Gridea Pro
-    </div>
-    
-
-    
-    <div class="footer-powered">
-      <span>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener noreferrer">Gridea Pro</a></span>
-    </div>
-
-  </div>
-</footer>
-
-  
-  <div class="search-overlay" id="searchOverlay" style="display:none;">
-  <div class="search-modal">
-    <div class="search-header">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." autocomplete="off" />
-      <span class="search-kbd">&#8984;K</span>
-      <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-    <div class="search-results" id="searchResults"></div>
-  </div>
-</div>
-
-<script src="/scripts/search.js"></script>
-  
-
-  
-
-  
-
-  <script>hljs.initHighlightingOnLoad();</script>
-
-  
-
-  
-
+        <div id="landlord">
+            <div class="message" style="opacity:0"></div>
+            <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+        </div>
+        <div id="domainname" style="display:none">https://skwlh544818.github.io
+                </div>
 </body>
 </html>
+<!-------------------- live2d功能👇 --------------------------->
+
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
+<script type="text/javascript" src="https://skwlh544818.github.io/media/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "https://skwlh544818.github.io/media/live2d/assets/tororo.model.json");
+</script>
+
+<!-------------------- live2d功能👆--------------------------->
+
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+<script>
+    var bgchoice = $('#bgchoice').html();
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+    bg.css("background", "url('" + bgurl + "')");
+
+    window.onload = function () {
+        aplayerbtnInit();
+    }
+</script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+
+
+<script src="https://skwlh544818.github.io/media/js/index.js"></script>
